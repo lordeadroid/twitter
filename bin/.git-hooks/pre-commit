@@ -1,0 +1,22 @@
+#! /bin/zsh
+
+pretty_print() {
+  echo "\033[91m*** $1 ***\033[0m"
+}
+
+check() {
+  if [ $? -ne 0 ]
+  then
+    pretty_print "$1"
+    exit 1
+  fi
+}
+
+git push 
+check "Updates Available"
+
+npm run lint
+check "Linting Errors"
+
+npm run build
+check "Build Error"
