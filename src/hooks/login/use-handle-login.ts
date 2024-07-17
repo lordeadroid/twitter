@@ -4,7 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
 import { THandleLogin } from "../../utils/types";
-import useLoginStore from "../../context/login-store";
+import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
 
 const useHandleLogin = () => {
@@ -12,21 +12,21 @@ const useHandleLogin = () => {
   const auth = getAuth(app);
   const updateEmail = useLoginStore((state) => state.updateEmail);
   const navigate = useNavigate();
-  const loggedIn = useLoginStore((state) => state.loggedIn);
-  const setLoggedIn = useLoginStore((state) => state.setLoggedIn);
+  const loginStatus = useLoginStore((state) => state.loginStatus);
+  const updateLoginStatus = useLoginStore((state) => state.updateLoginStatus);
 
   useEffect(() => {
-    if (!loggedIn) {
+    if (loginStatus) {
       navigate(PATH.home);
     }
-  }, [loggedIn, navigate]);
+  }, [loginStatus, navigate]);
 
   const handleLogin: THandleLogin = async (values) => {
     const { email, password } = values;
 
     await signInWithEmailAndPassword(auth, email, password);
     updateEmail(email);
-    setLoggedIn();
+    updateLoginStatus();
     navigate(PATH.home);
   };
 
