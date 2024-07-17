@@ -1,8 +1,8 @@
 import { Button, Flex, PasswordInput, Text, TextInput } from "@mantine/core";
 import { Link } from "react-router-dom";
-import { PATH, SIZE } from "../../Utils/constant";
-import useLoginForm from "../../Hooks/login/useLoginForm";
-import useHandleLogin from "../../Hooks/login/useHandleLogin";
+import { PATH, SIZE } from "../../utils/constant";
+import useLoginForm from "../../hooks/login/use-login-form";
+import useHandleLogin from "../../hooks/login/use-handle-login";
 
 const LoginPage = () => {
   const signupForm = useLoginForm();

@@ -2,10 +2,10 @@ import "@mantine/core/styles.css";
 import theme from "./theme";
 import { Flex, MantineProvider } from "@mantine/core";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
-import HomePage from "./Pages/home/Homepage";
-import LoginPage from "./Pages/login/LoginPage";
-import SignupPage from "./Pages/signup/SignupPage";
-import ErrorPage from "./Pages/error/Error-Page";
+import HomePage from "./pages/home";
+import LoginPage from "./pages/login";
+import SignupPage from "./pages/signup";
+import ErrorPage from "./pages/error";
 
 const Layout = () => {
   return (

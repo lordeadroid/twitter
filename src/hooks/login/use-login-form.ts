@@ -1,7 +1,7 @@
 import { useForm, UseFormReturnType } from "@mantine/form";
-import { TLoginFormData } from "../../Utils/types";
-import { INIT_LOGIN_FORM_VALUES } from "../../Utils/constant";
-import formValidator from "../../Utils/form-validator";
+import { TLoginFormData } from "../../utils/types";
+import { INIT_LOGIN_FORM_VALUES } from "../../utils/constant";
+import formValidator from "../../utils/form-validator";
 
 const useLoginForm = () => {
   const loginForm: UseFormReturnType<TLoginFormData> = useForm({

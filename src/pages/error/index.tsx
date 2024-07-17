@@ -1,7 +1,7 @@
 import styles from "./error.module.css";
 import { Link } from "react-router-dom";
 import { Image, Title, Text, Button, SimpleGrid, Flex } from "@mantine/core";
-import { PATH, SIZE } from "../../Utils/constant";
+import { PATH, SIZE } from "../../utils/constant";
 
 const ErrorPage = () => {
   const image = "https://ui.mantine.dev/_next/static/media/image.11cd6c19.svg";

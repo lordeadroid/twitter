@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { THandleSignup } from "../../Utils/types";
-import FIREBASE_CONFIG from "../../Utils/firebase-config";
+import { THandleSignup } from "../../utils/types";
+import FIREBASE_CONFIG from "../../utils/firebase-config";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { PATH } from "../../Utils/constant";
+import { PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
 
 const useHandleSignup = () => {
