@@ -1,12 +1,12 @@
 import { Button, Flex, PasswordInput, Text, TextInput } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { PATH, SIZE } from "../../Utils/constant";
-import useSignupForm from "../../Hooks/signup/useHandleSignForm";
-import useHandleSignupForm from "../../Hooks/signup/useHandleSignup";
+import useSignupForm from "../../Hooks/signup/useSignupForm";
+import useHandleSignup from "../../Hooks/signup/useHandleSignup";
 
 const SignupPage = () => {
   const signupForm = useSignupForm();
-  const handleSignup = useHandleSignupForm();
+  const handleSignup = useHandleSignup();
 
   return (
     <Flex
@@ -16,7 +16,7 @@ const SignupPage = () => {
       p={SIZE.extraLarge}
     >
       <Text size={"2.5rem"} fw={700}>
-        Welcome to AntStack
+        Welcome to Twitter
       </Text>
       <form
         onSubmit={signupForm.onSubmit(handleSignup)}

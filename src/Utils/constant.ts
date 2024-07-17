@@ -1,32 +1,35 @@
+export const EMPTYSTRING = "";
+
 export const PATH = {
   home: "/",
   login: "/login",
+  signup: "/signup",
 } as const;
 
 export const SIZE = {
-  extraLarge: "lg",
   extraSmall: "xs",
-  large: "lg",
-  medium: "md",
   small: "sm",
+  medium: "md",
+  large: "lg",
+  extraLarge: "lg",
 } as const;
 
-export const EMPTYSTRING = "";
-
-export const INIT_SIGNUP_FORM_VALUES = {
+export const INIT_LOGIN_FORM_VALUES = {
   email: EMPTYSTRING,
   password: EMPTYSTRING,
+};
+
+export const INIT_SIGNUP_FORM_VALUES = {
+  ...INIT_LOGIN_FORM_VALUES,
   number: EMPTYSTRING,
-  cart: <number[]>[],
 };
 
 export const FORM_ERROR = {
   email: "Invalid email",
-  password: "Password must have at least 3 characters",
-  username: "Username must have at least 3 characters",
-  nationality: "Select one of the option",
+  password: "Password must have at least 6 characters",
 } as const;
 
-export const MIN_LENGTH = {
+export const VALID = {
+  email: /^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/,
   password: 6,
 } as const;

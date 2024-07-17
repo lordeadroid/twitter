@@ -2,11 +2,15 @@ export type TValidateFormEntry = (value: string) => string | null;
 
 export type TValidatorFn = (value: string) => boolean;
 
-export type TSignupFormData = {
+export type TLoginFormData = {
   email: string;
   password: string;
-  number: string;
-  cart: number[];
 };
+
+export type TSignupFormData = TLoginFormData & {
+  number: string;
+};
+
+export type THandleLogin = (values: TLoginFormData) => void;
 
 export type THandleSignup = (values: TSignupFormData) => void;

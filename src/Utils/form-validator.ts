@@ -1,34 +1,21 @@
-import { FORM_ERROR, MIN_LENGTH } from "./constant";
+import { FORM_ERROR, VALID } from "./constant";
 import { TValidateFormEntry, TValidatorFn } from "./types";
 
-const isValidEmail: TValidatorFn = (value) => /^\S+@\S+$/.test(value);
+const isValidEmail: TValidatorFn = (value) => VALID.email.test(value);
 
 const validateEmail: TValidateFormEntry = (value) => {
   return isValidEmail(value) ? null : FORM_ERROR.email;
 };
 
-const isValidPassword: TValidatorFn = (value) =>
-  value.length < MIN_LENGTH.password;
+const isValidPassword: TValidatorFn = (value) => value.length < VALID.password;
 
 const validatePassword: TValidateFormEntry = (value) => {
   return isValidPassword(value) ? FORM_ERROR.password : null;
 };
 
-const isValidUsername: TValidatorFn = (value) =>
-  value.length < MIN_LENGTH.username;
-
-const validateUsername: TValidateFormEntry = (value) => {
-  return isValidUsername(value) ? FORM_ERROR.username : null;
-};
-
-const signupFormValidator = {
+const formValidator = {
   email: validateEmail,
   password: validatePassword,
 };
 
-const loginFormValidator = {
-  username: validateUsername,
-  password: validatePassword,
-};
-
-export { signupFormValidator, loginFormValidator };
+export default formValidator;
