@@ -1,7 +1,7 @@
 #! /bin/zsh
 
 pretty_print() {
-  echo "\033[91m*** $1 ***\033[0m"
+  echo "\033[91m\n*** $1 ***\033[0m"
 }
 
 check() {
@@ -11,6 +11,16 @@ check() {
     exit 1
   fi
 }
+
+check_unstaged_files() {
+  if [[ -n $(git diff) ]]
+  then
+    return 1
+  fi
+}
+
+check_unstaged_files
+check "Unstaged Files"
 
 git push 
 check "Updates Available"
