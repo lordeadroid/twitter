@@ -33,3 +33,7 @@ export const VALID = {
   email: /^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/,
   password: 6,
 } as const;
+
+export const STORE = {
+  login: "login-store",
+};

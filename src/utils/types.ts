@@ -14,3 +14,9 @@ export type TSignupFormData = TLoginFormData & {
 export type THandleLogin = (values: TLoginFormData) => void;
 
 export type THandleSignup = (values: TSignupFormData) => void;
+
+export type TLoginStore = {
+  email: string;
+  updateEmail: (email: string) => void;
+  resetEmail: () => void;
+};
