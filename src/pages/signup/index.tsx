@@ -3,31 +3,25 @@ import { Link } from "react-router-dom";
 import useSignupForm from "../../hooks/signup/use-signup-form";
 import useHandleSignup from "../../hooks/signup/use-handle-signup";
 import { PATH, SIZE } from "../../utils/constant";
+import Form from "../../components/Form";
+import Page from "../../components/Page";
+import Heading from "../../components/Heading";
 
 const SignupPage = () => {
+  const style = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "3rem",
+  };
   const signupForm = useSignupForm();
   const handleSignup = useHandleSignup();
 
   return (
-    <Flex
-      direction={"column"}
-      gap={"4rem"}
-      align={"center"}
-      p={SIZE.extraLarge}
-    >
-      <Text size={"2.5rem"} fw={700}>
-        Welcome to Twitter
-      </Text>
-      <form
-        onSubmit={signupForm.onSubmit(handleSignup)}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "3rem",
-        }}
-      >
+    <Page height="100vh">
+      <Heading content="Join Twitter Today" fontSize="3rem" fontWeight={700} />
+      <Form handleLogin={signupForm.onSubmit(handleSignup)} style={style}>
         <Flex direction={"column"} gap={SIZE.large}>
           <TextInput
             w={"24rem"}
@@ -44,12 +38,12 @@ const SignupPage = () => {
         <Button type="submit" size={SIZE.medium} w={"8rem"}>
           Submit
         </Button>
-      </form>
+      </Form>
       <Flex gap={SIZE.extraSmall}>
         <Text>Already have an account?</Text>
         <Link to={PATH.login}>Login</Link>
       </Flex>
-    </Flex>
+    </Page>
   );
 };
 
