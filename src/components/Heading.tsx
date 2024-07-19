@@ -1,17 +1,25 @@
 import { Text } from "@mantine/core";
 
 type THeading = {
-  content: string;
+  text: string;
+  color?: string;
+  width?: string;
   fontSize?: string;
   fontWeight?: number;
 };
 
 const Heading = (props: THeading) => {
-  const { content, fontSize, fontWeight } = props;
+  const { text, color, width, fontSize, fontWeight } = props;
 
   return (
-    <Text size={fontSize} fw={fontWeight}>
-      {content}
+    <Text
+      size={fontSize}
+      fw={fontWeight}
+      c={color}
+      w={width}
+      style={{ textAlign: "center" }}
+    >
+      {text}
     </Text>
   );
 };

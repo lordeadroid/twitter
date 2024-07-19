@@ -2,20 +2,24 @@ import { Flex } from "@mantine/core";
 
 type TPage = {
   height?: string;
+  width?: string;
+  justify?: string;
+  align?: string;
   children: JSX.Element[];
 };
 
 const Page = (props: TPage) => {
-  const { height, children } = props;
+  const { height, width, justify, align, children } = props;
 
   return (
     <Flex
       h={height}
+      w={width}
+      p={"3rem 8rem"}
       direction={"column"}
-      justify={"center"}
       gap={"10vh"}
-      align={"center"}
-      p={"10vh"}
+      justify={justify}
+      align={align}
     >
       {children}
     </Flex>

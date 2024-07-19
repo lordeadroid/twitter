@@ -1,12 +1,12 @@
-import { Flex, PasswordInput, Text, TextInput } from "@mantine/core";
-import { Link } from "react-router-dom";
-import { PATH, SIZE } from "../../utils/constant";
+import Form from "../../components/Form";
+import Page from "../../components/Page";
+import Heading from "../../components/Heading";
+import CreateButton from "../../components/CreateButton";
 import useLoginForm from "../../hooks/login/use-login-form";
 import useHandleLogin from "../../hooks/login/use-handle-login";
-import Heading from "../../components/Heading";
-import Page from "../../components/Page";
-import Form from "../../components/Form";
-import CreateButton from "../../components/CreateButton";
+import { Link } from "react-router-dom";
+import { PATH, SIZE } from "../../utils/constant";
+import { Flex, PasswordInput, Text, TextInput } from "@mantine/core";
 
 const LoginPage = () => {
   const style = {
@@ -14,23 +14,31 @@ const LoginPage = () => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    gap: "3rem",
+    gap: "5vh",
   };
+
   const loginForm = useLoginForm();
   const handleLogin = useHandleLogin();
 
   return (
-    <Page height="100vh">
-      <Heading content="Login to Twitter" fontSize="3rem" fontWeight={700} />
+    <Page height="100vh" justify="center" align="center">
+      <Heading
+        text="Login To Twitter"
+        fontSize="3rem"
+        fontWeight={700}
+        color="primary.9"
+        width="25rem"
+      />
       <Form handleLogin={loginForm.onSubmit(handleLogin)} style={style}>
-        <Flex direction={"column"} gap={SIZE.large}>
+        <Flex gap={"2vh"} direction={"column"}>
           <TextInput
-            w={"24rem"}
+            w={"23rem"}
             size={SIZE.medium}
             placeholder="email"
             {...loginForm.getInputProps("email")}
           />
           <PasswordInput
+            w={"23rem"}
             size={SIZE.medium}
             placeholder="password"
             {...loginForm.getInputProps("password")}
@@ -41,6 +49,7 @@ const LoginPage = () => {
           value="Submit"
           size={SIZE.medium}
           width={"8rem"}
+          color="primary.5"
         />
       </Form>
       <Flex gap={SIZE.extraSmall}>

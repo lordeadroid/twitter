@@ -1,12 +1,12 @@
-import { Flex, PasswordInput, Text, TextInput } from "@mantine/core";
-import { Link } from "react-router-dom";
-import useSignupForm from "../../hooks/signup/use-signup-form";
-import useHandleSignup from "../../hooks/signup/use-handle-signup";
-import { PATH, SIZE } from "../../utils/constant";
 import Form from "../../components/Form";
 import Page from "../../components/Page";
 import Heading from "../../components/Heading";
 import CreateButton from "../../components/CreateButton";
+import useSignupForm from "../../hooks/signup/use-signup-form";
+import useHandleSignup from "../../hooks/signup/use-handle-signup";
+import { Link } from "react-router-dom";
+import { PATH, SIZE } from "../../utils/constant";
+import { Flex, PasswordInput, Text, TextInput } from "@mantine/core";
 
 const SignupPage = () => {
   const style = {
@@ -14,23 +14,31 @@ const SignupPage = () => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    gap: "3rem",
+    gap: "5vh",
   };
+
   const signupForm = useSignupForm();
   const handleSignup = useHandleSignup();
 
   return (
-    <Page height="100vh">
-      <Heading content="Join Twitter Today" fontSize="3rem" fontWeight={700} />
+    <Page height="100vh" justify="center" align="center">
+      <Heading
+        text="Join Twitter Now"
+        fontSize="3rem"
+        fontWeight={700}
+        color="primary.9"
+        width="25rem"
+      />
       <Form handleLogin={signupForm.onSubmit(handleSignup)} style={style}>
-        <Flex direction={"column"} gap={SIZE.large}>
+        <Flex gap={"2vh"} direction={"column"}>
           <TextInput
-            w={"24rem"}
+            w={"23rem"}
             size={SIZE.medium}
             placeholder="email"
             {...signupForm.getInputProps("email")}
           />
           <PasswordInput
+            w={"23rem"}
             size={SIZE.medium}
             placeholder="password"
             {...signupForm.getInputProps("password")}
@@ -41,6 +49,7 @@ const SignupPage = () => {
           value="Submit"
           size={SIZE.medium}
           width={"8rem"}
+          color="primary.5"
         />
       </Form>
       <Flex gap={SIZE.extraSmall}>
