@@ -6,7 +6,6 @@ import { PATH, SIZE } from "../../utils/constant";
 import useHandleLogout from "../../hooks/use-handle-logout";
 import CreateButton from "../../components/CreateButton";
 import twitterLogo from "/favicon.png";
-import SidePanel from "../../components/SidePanel";
 import Page from "../../components/Page";
 
 const HomePage = () => {
@@ -21,7 +20,7 @@ const HomePage = () => {
   }, [loginStatus, navigate]);
 
   return (
-    <Page>
+    <Page width="100vw">
       <Flex justify="space-between" w={"100%"}>
         <Flex align="center" gap={SIZE.small}>
           <Image src={twitterLogo} alt="Twitter Logo" h={"2.5rem"} />
@@ -35,7 +34,7 @@ const HomePage = () => {
           value="Logout"
         />
       </Flex>
-      <SidePanel />
+      <></>
     </Page>
   );
 };
