@@ -10,7 +10,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prestart": "npm run build",
     "start": "vite preview",
-    "setup": "sh ./bin/setup.sh"
+    "setup": "sh ./bin/setup.sh",
+    "test": "vitest"
   },
   "dependencies": {
     "@mantine/core": "^7.11.1",
@@ -31,6 +32,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vitest": "^2.0.3"
   }
 }

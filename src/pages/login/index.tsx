@@ -1,4 +1,4 @@
-import { Button, Flex, PasswordInput, Text, TextInput } from "@mantine/core";
+import { Flex, PasswordInput, Text, TextInput } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { PATH, SIZE } from "../../utils/constant";
 import useLoginForm from "../../hooks/login/use-login-form";
@@ -6,6 +6,7 @@ import useHandleLogin from "../../hooks/login/use-handle-login";
 import Heading from "../../components/Heading";
 import Page from "../../components/Page";
 import Form from "../../components/Form";
+import CreateButton from "../../components/CreateButton";
 
 const LoginPage = () => {
   const style = {
@@ -35,9 +36,12 @@ const LoginPage = () => {
             {...loginForm.getInputProps("password")}
           />
         </Flex>
-        <Button type="submit" size={SIZE.medium} w={"8rem"}>
-          Submit
-        </Button>
+        <CreateButton
+          type="submit"
+          value="Submit"
+          size={SIZE.medium}
+          width={"8rem"}
+        />
       </Form>
       <Flex gap={SIZE.extraSmall}>
         <Text>Don't have an account?</Text>

@@ -1,4 +1,4 @@
-import { Button, Flex, PasswordInput, Text, TextInput } from "@mantine/core";
+import { Flex, PasswordInput, Text, TextInput } from "@mantine/core";
 import { Link } from "react-router-dom";
 import useSignupForm from "../../hooks/signup/use-signup-form";
 import useHandleSignup from "../../hooks/signup/use-handle-signup";
@@ -6,6 +6,7 @@ import { PATH, SIZE } from "../../utils/constant";
 import Form from "../../components/Form";
 import Page from "../../components/Page";
 import Heading from "../../components/Heading";
+import CreateButton from "../../components/CreateButton";
 
 const SignupPage = () => {
   const style = {
@@ -35,9 +36,12 @@ const SignupPage = () => {
             {...signupForm.getInputProps("password")}
           />
         </Flex>
-        <Button type="submit" size={SIZE.medium} w={"8rem"}>
-          Submit
-        </Button>
+        <CreateButton
+          type="submit"
+          value="Submit"
+          size={SIZE.medium}
+          width={"8rem"}
+        />
       </Form>
       <Flex gap={SIZE.extraSmall}>
         <Text>Already have an account?</Text>
