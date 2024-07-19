@@ -17,7 +17,7 @@ const Page = (props: TPage) => {
       w={width}
       p={"3rem 8rem"}
       direction={"column"}
-      gap={"10vh"}
+      gap={"8vh"}
       justify={justify}
       align={align}
     >

@@ -6,6 +6,7 @@ import { PATH, SIZE } from "../../utils/constant";
 import useHandleLogout from "../../hooks/use-handle-logout";
 import CreateButton from "../../components/CreateButton";
 import twitterLogo from "/favicon.png";
+import SidePanel from "../../components/SidePanel";
 import Page from "../../components/Page";
 
 const HomePage = () => {
@@ -34,7 +35,7 @@ const HomePage = () => {
           value="Logout"
         />
       </Flex>
-      <></>
+      <SidePanel />
     </Page>
   );
 };
