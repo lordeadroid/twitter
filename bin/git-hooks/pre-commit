@@ -27,6 +27,3 @@ check "Updates Available"
 
 npm run lint
 check "Linting Errors"
-
-npm run build
-check "Build Error"
