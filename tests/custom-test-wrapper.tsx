@@ -1,16 +1,10 @@
 import "@testing-library/jest-dom";
 import React from "react";
-import { RouterProvider } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
 import theme from "../src/theme";
-import Router from "../src/router";
 
-const AllProviders = () => {
-  return (
-    <MantineProvider theme={theme}>
-      <RouterProvider router={Router} />
-    </MantineProvider>
-  );
-};
+const AllProviders = ({ children }: { children: React.JSX.Element }) => (
+  <MantineProvider theme={theme}>{children}</MantineProvider>
+);
 
 export default AllProviders;
