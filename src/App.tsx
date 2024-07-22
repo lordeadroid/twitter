@@ -1,6 +1,6 @@
 import "@mantine/core/styles.css";
 import { RouterProvider } from "react-router-dom";
-import Router from "./routes";
+import Router from "./router";
 
 const App = () => {
   return <RouterProvider router={Router} />;
