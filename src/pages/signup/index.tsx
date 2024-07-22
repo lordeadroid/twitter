@@ -46,7 +46,7 @@ const SignupPage = () => {
         </Flex>
         <CreateButton
           type="submit"
-          value="Submit"
+          value="Sign Up"
           size={SIZE.medium}
           width={"8rem"}
           color="primary.5"

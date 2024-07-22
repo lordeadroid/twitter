@@ -46,7 +46,7 @@ const LoginPage = () => {
         </Flex>
         <CreateButton
           type="submit"
-          value="Submit"
+          value="Login"
           size={SIZE.medium}
           width={"8rem"}
           color="primary.5"
