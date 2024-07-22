@@ -1,4 +1,4 @@
-import { Flex, Image, Text } from "@mantine/core";
+import { Divider, Flex, Group, Image, Text } from "@mantine/core";
 import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -21,21 +21,31 @@ const HomePage = () => {
   }, [loginStatus, navigate]);
 
   return (
-    <Page width="100vw">
-      <Flex justify="space-between" w={"100%"}>
-        <Flex align="center" gap={SIZE.small}>
-          <Image src={twitterLogo} alt="Twitter Logo" h={"2.5rem"} />
-          <Text fz={"h1"} fw={800}>
-            twitter
-          </Text>
+    <Page width="100vw" height="100vh">
+      <Flex direction={"row"} justify={"space-between"} h={"inherit"}>
+        <Flex w={"20%"} direction={"column"}>
+          <Group align="center" gap={SIZE.small} p={SIZE.extraLarge}>
+            <Image src={twitterLogo} alt="Twitter Logo" h={"2.5rem"} />
+            <Text fz={"h1"} fw={800}>
+              twitter
+            </Text>
+          </Group>
+          <Divider />
+          <SidePanel />
         </Flex>
-        <CreateButton
-          size={SIZE.medium}
-          handleClick={handleLogout}
-          value="Logout"
-        />
+        <Divider orientation="vertical" />
+        <Flex w={"50%"} h={"100%"}>
+          {/* <Tweets /> */}
+        </Flex>
+        <Divider orientation="vertical" />
+        <Flex w={"30%"} justify={"flex-end"}>
+          <CreateButton
+            size={SIZE.medium}
+            handleClick={handleLogout}
+            value="Logout"
+          />
+        </Flex>
       </Flex>
-      <SidePanel />
     </Page>
   );
 };

@@ -5,7 +5,7 @@ type TPage = {
   width?: string;
   justify?: string;
   align?: string;
-  children: JSX.Element[];
+  children: JSX.Element[] | JSX.Element;
 };
 
 const Page = (props: TPage) => {
