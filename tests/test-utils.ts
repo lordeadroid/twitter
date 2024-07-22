@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import  AllProviders  from "./custom-test-wrapper";
+import AllProviders from "./custom-test-wrapper";
 import React from "react";
 
 const customRender = (ui: React.JSX.Element, options = {}) =>

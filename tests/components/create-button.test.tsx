@@ -6,13 +6,18 @@ import { screen } from "@testing-library/react";
 
 describe("CreateButton", () => {
   test("renders button with correct props", () => {
-    const handleClick = vi.fn();
+    const handleSubmit = vi.fn();
+    const buttonTag = "Submit";
 
     render(
-      <CreateButton value="Submit" type="submit" handleClick={handleClick} />
+      <CreateButton
+        value={buttonTag}
+        type="submit"
+        handleClick={handleSubmit}
+      />
     );
 
-    const button = screen.getByRole("button", { name: /submit/i });
+    const button = screen.getByRole("button", { name: buttonTag });
 
     expect(button).toBeInTheDocument();
     expect(button).toHaveAttribute("type", "submit");
