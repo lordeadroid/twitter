@@ -12,7 +12,7 @@ const SidePanel = () => {
   ];
 
   return (
-    <Flex direction={"column"} p={SIZE.small}>
+    <Flex direction={"column"} p={SIZE.small} mt={"4rem"}>
       {menuOptions.map((option, index) => {
         return (
           <Group key={index} p={SIZE.small} align="center ">

@@ -12,13 +12,7 @@ const Heading = (props: THeading) => {
   const { text, color, width, fontSize, fontWeight } = props;
 
   return (
-    <Text
-      size={fontSize}
-      fw={fontWeight}
-      c={color}
-      w={width}
-      style={{ textAlign: "center" }}
-    >
+    <Text size={fontSize} fw={fontWeight} c={color} w={width}>
       {text}
     </Text>
   );
