@@ -1,4 +1,4 @@
-import { Flex, Text } from "@mantine/core";
+import { Flex, Group, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { SIZE } from "../utils/constant";
 import Heading from "./Heading";
@@ -17,8 +17,16 @@ const CreateTweet = ({ tweet }: { tweet: TTweet }) => {
       w={"100%"}
       p={SIZE.extraSmall}
       direction={"column"}
+      style={{ borderRadius: "1rem" }}
     >
-      <Heading text={tweet.user} fontWeight={700} />
+      <Group justify="space-between">
+        <Heading
+          text={tweet.user}
+          fontWeight={700}
+          fontSize={SIZE.extraLarge}
+        />
+        <Text size={SIZE.extraSmall}>{tweet.date.toDateString()}</Text>
+      </Group>
       <Text p={"0 2rem"}>{tweet.message}</Text>
     </Flex>
   );
