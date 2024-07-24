@@ -10,7 +10,7 @@ type TTweet = {
   likes: number;
 };
 
-const CreateTweet = ({ tweet }: { tweet: TTweet }) => {
+const Tweet = ({ tweet }: { tweet: TTweet }) => {
   return (
     <Flex
       bd={"1px solid darkgray"}
@@ -45,7 +45,7 @@ const Tweets = () => {
   return (
     <Flex direction={"column"} p={SIZE.extraLarge} w={"100%"} gap={SIZE.medium}>
       {tweets?.map((tweet, index) => {
-        return <CreateTweet key={index} tweet={tweet} />;
+        return <Tweet key={index} tweet={tweet} />;
       })}
     </Flex>
   );

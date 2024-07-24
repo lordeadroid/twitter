@@ -33,12 +33,18 @@ const HomePage = () => {
           <SidePanel />
         </Flex>
         <Divider orientation="vertical" />
-        <Flex w={"50%"} h={"100%"}>
+        <Flex w={"55%"} h={"100%"}>
           <Tweets />
         </Flex>
         <Divider orientation="vertical" />
-        <Flex w={"30%"} justify={"flex-end"}>
+        <Flex
+          w={"25%"}
+          direction={"column"}
+          p={SIZE.extraLarge}
+          gap={SIZE.extraLarge}
+        >
           <CreateButton
+            width="10vw"
             size={SIZE.medium}
             handleClick={handleLogout}
             value="Logout"
