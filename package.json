@@ -11,8 +11,10 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prestart": "npm run build",
     "start": "vite preview",
+    "session": "sh ./bin/tmux-session.sh",
     "setup": "sh ./bin/setup.sh",
-    "test": "vitest run"
+    "test": "vitest run",
+    "watch-test": "vitest"
   },
   "dependencies": {
     "@mantine/core": "^7.11.1",
