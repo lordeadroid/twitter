@@ -32,7 +32,7 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
   );
 };
 
-const Tweets = () => {
+const TweetsPanel = ({ width }: { width: string }) => {
   const [tweets, setTweets] = useState<TTweet[] | null>(null);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Tweets = () => {
   }, []);
 
   return (
-    <Flex direction={"column"} p={SIZE.extraLarge} w={"100%"} gap={SIZE.medium}>
+    <Flex direction={"column"} p={SIZE.extraLarge} w={width} gap={SIZE.medium}>
       {tweets?.map((tweet, index) => {
         return <Tweet key={index} tweet={tweet} />;
       })}
@@ -51,4 +51,4 @@ const Tweets = () => {
   );
 };
 
-export default Tweets;
+export default TweetsPanel;
