@@ -25,9 +25,9 @@ const HomePage = () => {
       <Flex direction={"row"} justify={"space-between"} h={"inherit"}>
         <NavPanel width="20%" />
         <Divider orientation="vertical" />
-        <TweetsPanel width="55%" />
+        <TweetsPanel width="50%" />
         <Divider orientation="vertical" />
-        <ProfilePanel width="25%" handleLogout={handleLogout} />
+        <ProfilePanel width="30%" handleLogout={handleLogout} />
       </Flex>
     </Page>
   );

@@ -37,3 +37,7 @@ export const VALID = {
 export const STORE = {
   login: "login-store",
 };
+
+export const DB_NAME = "tweets";
+
+export const TWEET_LIMIT = 140;
