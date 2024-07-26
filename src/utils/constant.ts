@@ -38,6 +38,6 @@ export const STORE = {
   login: "login-store",
 };
 
-export const DB_NAME = "tweets";
+export const DB = { tweets: "tweets" };
 
 export const TWEET_LIMIT = 140;

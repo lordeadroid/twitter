@@ -2,13 +2,8 @@ import { Flex, Group, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { SIZE } from "../utils/constant";
 import Heading from "./Heading";
-
-type TTweet = {
-  username: string;
-  message: string;
-  date: Date;
-  likes: number;
-};
+import getTweets from "../services/get-tweets";
+import { TTweet } from "../utils/types";
 
 const Tweet = ({ tweet }: { tweet: TTweet }) => {
   return (
@@ -25,7 +20,8 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
           fontWeight={700}
           fontSize={SIZE.extraLarge}
         />
-        <Text size={SIZE.extraSmall}>{tweet.date.toDateString()}</Text>
+        {/* change date format */}
+        {/* <Text size={SIZE.extraSmall}>{tweet.date.toString()}</Text> */}
       </Group>
       <Text p={"0 2rem"}>{tweet.message}</Text>
     </Flex>
@@ -36,11 +32,11 @@ const TweetsPanel = ({ width }: { width: string }) => {
   const [tweets, setTweets] = useState<TTweet[] | null>(null);
 
   useEffect(() => {
-    setTweets([
-      { username: "rishabh", message: "hello", date: new Date(), likes: 10 },
-      { username: "tester", message: "bye", date: new Date(), likes: 1000 },
-    ]);
-  }, []);
+    (async () => {
+      const tweetsData = await getTweets();
+      setTweets(tweetsData);
+    })();
+  }, [tweets]);
 
   return (
     <Flex direction={"column"} p={SIZE.extraLarge} w={width} gap={SIZE.medium}>

@@ -1,13 +1,15 @@
+import { DB } from "../utils/constant";
 import db, { collection, addDoc } from "./db";
 
 const updateTweets = async (username: string, message: string) => {
   try {
-    await addDoc(collection(db, "tweets"), {
+    await addDoc(collection(db, DB.tweets), {
       username,
       message,
       date: new Date(),
     });
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Error adding document: ", error);
   }
 };
