@@ -6,7 +6,7 @@ const updateTweets = async (username: string, message: string) => {
     await addDoc(collection(db, DB.tweets), {
       username,
       message,
-      date: new Date(),
+      date: new Date().toDateString(),
     });
   } catch (error) {
     // eslint-disable-next-line no-console

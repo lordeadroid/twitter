@@ -20,8 +20,7 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
           fontWeight={700}
           fontSize={SIZE.extraLarge}
         />
-        {/* change date format */}
-        {/* <Text size={SIZE.extraSmall}>{tweet.date.toString()}</Text> */}
+        <Text size={SIZE.extraSmall}>{tweet.date}</Text>
       </Group>
       <Text p={"0 2rem"}>{tweet.message}</Text>
     </Flex>
