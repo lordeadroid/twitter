@@ -2,10 +2,13 @@ import { Divider, Flex, Group, Text, Textarea } from "@mantine/core";
 import { EMPTYSTRING, SIZE, TWEET_LIMIT } from "../utils/constant";
 import { useState } from "react";
 import CreateButton from "./CreateButton";
+import updateTweets from "../services/update-tweets";
+import useLoginStore from "../context/use-login-store";
 
 const AddTweet = () => {
   const [message, setMessage] = useState(EMPTYSTRING);
   const [errorMsg, setErrorMsg] = useState(EMPTYSTRING);
+  const email = useLoginStore((state) => state.email);
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(event.target.value);
@@ -22,6 +25,7 @@ const AddTweet = () => {
       return;
     }
 
+    updateTweets(email, message);
     setMessage(EMPTYSTRING);
   };
 

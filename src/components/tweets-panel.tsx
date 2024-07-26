@@ -4,7 +4,7 @@ import { SIZE } from "../utils/constant";
 import Heading from "./Heading";
 
 type TTweet = {
-  user: string;
+  username: string;
   message: string;
   date: Date;
   likes: number;
@@ -21,7 +21,7 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
     >
       <Group justify="space-between">
         <Heading
-          text={tweet.user}
+          text={tweet.username}
           fontWeight={700}
           fontSize={SIZE.extraLarge}
         />
@@ -37,8 +37,8 @@ const TweetsPanel = ({ width }: { width: string }) => {
 
   useEffect(() => {
     setTweets([
-      { user: "rishabh", message: "hello", date: new Date(), likes: 10 },
-      { user: "tester", message: "bye", date: new Date(), likes: 1000 },
+      { username: "rishabh", message: "hello", date: new Date(), likes: 10 },
+      { username: "tester", message: "bye", date: new Date(), likes: 1000 },
     ]);
   }, []);
 
