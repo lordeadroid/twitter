@@ -1,7 +1,7 @@
 import Form from "../../components/Form";
 import Page from "../../components/Page";
 import Heading from "../../components/Heading";
-import CreateButton from "../../components/CreateButton";
+import Button from "../../components/button";
 import useSignupForm from "../../hooks/signup/use-signup-form";
 import useHandleSignup from "../../hooks/signup/use-handle-signup";
 import { Link } from "react-router-dom";
@@ -44,7 +44,7 @@ const SignupPage = () => {
             {...signupForm.getInputProps("password")}
           />
         </Flex>
-        <CreateButton
+        <Button
           type="submit"
           value="Sign Up"
           size={SIZE.medium}

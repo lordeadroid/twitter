@@ -1,7 +1,7 @@
 import { Divider, Flex, Group, Text, Textarea } from "@mantine/core";
 import { EMPTYSTRING, SIZE, TWEET_LIMIT } from "../utils/constant";
 import { useState } from "react";
-import Button from "./CreateButton";
+import Button from "./button";
 import updateTweets from "../services/update-tweets";
 import useLoginStore from "../context/use-login-store";
 import useTweetStore from "../context/use-tweet-store";

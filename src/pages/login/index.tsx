@@ -1,7 +1,7 @@
 import Form from "../../components/Form";
 import Page from "../../components/Page";
 import Heading from "../../components/Heading";
-import CreateButton from "../../components/CreateButton";
+import Button from "../../components/button";
 import useLoginForm from "../../hooks/login/use-login-form";
 import useHandleLogin from "../../hooks/login/use-handle-login";
 import { Link } from "react-router-dom";
@@ -44,7 +44,7 @@ const LoginPage = () => {
             {...loginForm.getInputProps("password")}
           />
         </Flex>
-        <CreateButton
+        <Button
           type="submit"
           value="Login"
           size={SIZE.medium}

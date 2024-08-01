@@ -1,6 +1,6 @@
 import { Flex } from "@mantine/core";
 import { SIZE } from "../utils/constant";
-import CreateButton from "./CreateButton";
+import Button from "./button";
 import AddTweet from "./add-tweet";
 
 type TProfilePanel = {
@@ -14,11 +14,7 @@ const ProfilePanel = (props: TProfilePanel) => {
   return (
     <Flex w={width} direction={"column"} p={SIZE.extraLarge}>
       <Flex h={"40%"} justify={"flex-end"}>
-        <CreateButton
-          size={SIZE.medium}
-          handleClick={handleLogout}
-          value="Logout"
-        />
+        <Button size={SIZE.medium} handleClick={handleLogout} value="Logout" />
       </Flex>
       <AddTweet />
     </Flex>
