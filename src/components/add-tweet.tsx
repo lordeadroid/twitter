@@ -8,11 +8,15 @@ import useTweetStore from "../context/use-tweet-store";
 
 const AddTweet = () => {
   const [message, setMessage] = useState(EMPTYSTRING);
+  const [buttonState, setButtonState] = useState(true);
   const email = useLoginStore((state) => state.email);
   const refreshTweets = useTweetStore((state) => state.refreshTweets);
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(event.target.value);
+    const newMessage = event.target.value;
+
+    setMessage(newMessage);
+    setButtonState(newMessage.length === 0 ? true : false);
   };
 
   const handleSubmit = () => {
@@ -52,7 +56,11 @@ const AddTweet = () => {
         style={{ borderRadius: "0 0 0.75rem 0.75rem" }}
       >
         <Text>Tell the world what's in your mind!</Text>
-        <Button handleClick={handleSubmit} value="Tweet" />
+        <Button
+          value="Tweet"
+          handleClick={handleSubmit}
+          disabled={buttonState}
+        />
       </Flex>
     </Flex>
   );
