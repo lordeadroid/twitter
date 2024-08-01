@@ -26,6 +26,6 @@ export type TLoginStore = {
 export type TTweet = {
   username: string;
   message: string;
-  date: string;
+  timestamp: number;
   likes?: number;
 };

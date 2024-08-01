@@ -4,8 +4,11 @@ import { SIZE } from "../utils/constant";
 import Heading from "./Heading";
 import getTweets from "../services/get-tweets";
 import { TTweet } from "../utils/types";
+import useTweetStore from "../context/use-tweet-store";
 
 const Tweet = ({ tweet }: { tweet: TTweet }) => {
+  const date = new Date(tweet.timestamp).toDateString();
+
   return (
     <Flex
       bd={"1px solid darkgray"}
@@ -20,7 +23,7 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
           fontWeight={700}
           fontSize={SIZE.extraLarge}
         />
-        <Text size={SIZE.extraSmall}>{tweet.date}</Text>
+        <Text size={SIZE.extraSmall}>{date}</Text>
       </Group>
       <Text p={"0 2rem"}>{tweet.message}</Text>
     </Flex>
