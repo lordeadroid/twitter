@@ -16,7 +16,7 @@ const AddTweet = () => {
     const newMessage = event.target.value;
 
     setMessage(newMessage);
-    setButtonState(newMessage.length === 0 ? true : false);
+    setButtonState(newMessage.length === 0);
   };
 
   const handleSubmit = () => {
