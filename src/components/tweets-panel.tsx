@@ -28,6 +28,7 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
 };
 
 const TweetsPanel = ({ width }: { width: string }) => {
+  const rerenderTweets = useTweetStore((state) => state.rerenderTweets);
   const [tweets, setTweets] = useState<TTweet[] | null>(null);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const TweetsPanel = ({ width }: { width: string }) => {
       const tweetsData = await getTweets();
       setTweets(tweetsData);
     })();
-  }, [tweets]);
+  }, [rerenderTweets]);
 
   return (
     <Flex direction={"column"} p={SIZE.extraLarge} w={width} gap={SIZE.medium}>
