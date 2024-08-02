@@ -9,7 +9,8 @@ import useTweetStore from "../context/use-tweet-store";
 const AddTweet = () => {
   const [message, setMessage] = useState(EMPTYSTRING);
   const [buttonState, setButtonState] = useState(true);
-  const email = useLoginStore((state) => state.email);
+  const UID = useLoginStore((state) => state.UID);
+  const username = useLoginStore((state) => state.username);
   const refreshTweets = useTweetStore((state) => state.refreshTweets);
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -20,7 +21,7 @@ const AddTweet = () => {
   };
 
   const handleSubmit = () => {
-    updateTweets(email, message.trim());
+    updateTweets(UID, username, message.trim());
     setMessage(EMPTYSTRING);
     refreshTweets();
   };
