@@ -5,7 +5,7 @@ import Button from "../../components/button";
 import useSignupForm from "../../hooks/signup/use-signup-form";
 import useHandleSignup from "../../hooks/signup/use-handle-signup";
 import { Link } from "react-router-dom";
-import { PATH, SIZE } from "../../utils/constant";
+import { FORM_FIELD, PATH, SIZE } from "../../utils/constant";
 import { Flex, PasswordInput, Text, TextInput } from "@mantine/core";
 
 const SignupPage = () => {
@@ -34,14 +34,21 @@ const SignupPage = () => {
           <TextInput
             w={"23rem"}
             size={SIZE.medium}
-            placeholder="email"
-            {...signupForm.getInputProps("email")}
+            placeholder={FORM_FIELD.username}
+            {...signupForm.getInputProps(FORM_FIELD.username)}
+          />
+
+          <TextInput
+            w={"23rem"}
+            size={SIZE.medium}
+            placeholder={FORM_FIELD.email}
+            {...signupForm.getInputProps(FORM_FIELD.email)}
           />
           <PasswordInput
             w={"23rem"}
             size={SIZE.medium}
-            placeholder="password"
-            {...signupForm.getInputProps("password")}
+            placeholder={FORM_FIELD.password}
+            {...signupForm.getInputProps(FORM_FIELD.password)}
           />
         </Flex>
         <Button
