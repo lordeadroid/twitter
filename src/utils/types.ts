@@ -16,8 +16,8 @@ export type THandleLogin = (values: TLoginFormData) => void;
 export type THandleSignup = (values: TSignupFormData) => void;
 
 export type TLoginStore = {
-  loginStatus: boolean;
-  updateLoginStatus: () => void;
+  UID: string;
+  updateUID: (uid: string) => void;
   username: string;
   updateUsername: (username: string) => void;
   resetUsername: () => void;

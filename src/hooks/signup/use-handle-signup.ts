@@ -16,14 +16,14 @@ const useHandleSignup = () => {
   const auth = getAuth(app);
   const updateUsername = useLoginStore((state) => state.updateUsername);
   const navigate = useNavigate();
-  const loginStatus = useLoginStore((state) => state.loginStatus);
-  const updateLoginStatus = useLoginStore((state) => state.updateLoginStatus);
+  const UID = useLoginStore((state) => state.UID);
+  const updateUID = useLoginStore((state) => state.updateUID);
 
   useEffect(() => {
-    if (loginStatus) {
+    if (UID) {
       navigate(PATH.home);
     }
-  }, [loginStatus, navigate]);
+  }, [UID, navigate]);
 
   const handleSignup: THandleSignup = async (values) => {
     const { username, email, password } = values;
@@ -34,7 +34,7 @@ const useHandleSignup = () => {
       password,
     );
     updateProfile(user, { displayName: username });
-    updateLoginStatus();
+    updateUID(user.uid);
     updateUsername(username);
 
     navigate(PATH.home);

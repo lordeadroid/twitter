@@ -6,9 +6,8 @@ import { TLoginStore } from "../utils/types";
 const useLoginStore = create<TLoginStore>()(
   persist(
     (set) => ({
-      loginStatus: false,
-      updateLoginStatus: () =>
-        set((state) => ({ loginStatus: !state.loginStatus })),
+      UID: EMPTYSTRING,
+      updateUID: (uid) => set(() => ({ UID: uid })),
       username: EMPTYSTRING,
       updateUsername: (username) => set({ username }),
       resetUsername: () => set({ username: EMPTYSTRING }),
