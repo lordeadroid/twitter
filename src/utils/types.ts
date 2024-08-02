@@ -8,7 +8,7 @@ export type TLoginFormData = {
 };
 
 export type TSignupFormData = TLoginFormData & {
-  email: string;
+  username: string;
 };
 
 export type THandleLogin = (values: TLoginFormData) => void;
