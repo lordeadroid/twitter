@@ -9,12 +9,12 @@ const useLoginStore = create<TLoginStore>()(
       loginStatus: false,
       updateLoginStatus: () =>
         set((state) => ({ loginStatus: !state.loginStatus })),
-      email: EMPTYSTRING,
-      updateEmail: (email) => set({ email }),
-      resetEmail: () => set({ email: EMPTYSTRING }),
+      username: EMPTYSTRING,
+      updateUsername: (username) => set({ username }),
+      resetUsername: () => set({ username: EMPTYSTRING }),
     }),
-    { name: STORE.login }
-  )
+    { name: STORE.login },
+  ),
 );
 
 export default useLoginStore;

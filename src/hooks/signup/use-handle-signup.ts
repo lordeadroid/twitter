@@ -1,16 +1,20 @@
 import { initializeApp } from "firebase/app";
 import { THandleSignup } from "../../utils/types";
 import FIREBASE_CONFIG from "../../utils/firebase-config";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
 import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 const useHandleSignup = () => {
   const app = initializeApp(FIREBASE_CONFIG);
   const auth = getAuth(app);
-  const updateEmail = useLoginStore((state) => state.updateEmail);
+  const updateUsername = useLoginStore((state) => state.updateUsername);
   const navigate = useNavigate();
   const loginStatus = useLoginStore((state) => state.loginStatus);
   const updateLoginStatus = useLoginStore((state) => state.updateLoginStatus);
@@ -22,11 +26,17 @@ const useHandleSignup = () => {
   }, [loginStatus, navigate]);
 
   const handleSignup: THandleSignup = async (values) => {
-    const { email, password } = values;
+    const { username, email, password } = values;
 
-    await createUserWithEmailAndPassword(auth, email, password);
-    updateEmail(email);
+    const { user } = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
+    updateProfile(user, { displayName: username });
     updateLoginStatus();
+    updateUsername(username);
+
     navigate(PATH.home);
   };
 

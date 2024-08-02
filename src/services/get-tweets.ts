@@ -10,9 +10,9 @@ const getTweets = async (queryLimit = 10): Promise<TTweet[]> => {
   );
 
   const queryData = await getDocs(tweetsQuery);
-  const tweetsData = queryData.docs.map((doc) => doc.data() as TTweet);
+  const tweets = queryData.docs.map((doc) => doc.data() as TTweet);
 
-  return tweetsData;
+  return tweets;
 };
 
 export default getTweets;
