@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { THandleSignup } from "../../utils/types";
 import FIREBASE_CONFIG from "../../utils/firebase-config";
-import { PATH } from "../../utils/constant";
+import { EMPTYSTRING, PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
 import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
@@ -20,7 +20,7 @@ const useHandleSignup = () => {
   const updateUID = useLoginStore((state) => state.updateUID);
 
   useEffect(() => {
-    if (UID) {
+    if (UID !== EMPTYSTRING) {
       navigate(PATH.home);
     }
   }, [UID, navigate]);
