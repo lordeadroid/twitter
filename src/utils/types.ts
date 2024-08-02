@@ -22,3 +22,10 @@ export type TLoginStore = {
   updateEmail: (email: string) => void;
   resetEmail: () => void;
 };
+
+export type TTweet = {
+  username: string;
+  message: string;
+  timestamp: number;
+  likes?: number;
+};

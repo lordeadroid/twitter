@@ -15,7 +15,7 @@ const Page = (props: TPage) => {
     <Flex
       h={height}
       w={width}
-      p={"3rem 8rem"}
+      p={"3rem 6rem"}
       direction={"column"}
       gap={"8vh"}
       justify={justify}

@@ -1,15 +1,13 @@
-import { Divider, Flex, Group, Image } from "@mantine/core";
+import { Divider, Flex } from "@mantine/core";
 import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { PATH, SIZE } from "../../utils/constant";
+import { PATH } from "../../utils/constant";
 import useHandleLogout from "../../hooks/use-handle-logout";
-import CreateButton from "../../components/CreateButton";
-import twitterLogo from "/favicon.png";
-import SidePanel from "../../components/SidePanel";
 import Page from "../../components/Page";
-import Heading from "../../components/Heading";
-import Tweets from "../../components/tweets";
+import ProfilePanel from "../../components/profile-panel";
+import TweetsPanel from "../../components/tweets-panel";
+import NavPanel from "../../components/nav-panel";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -25,25 +23,11 @@ const HomePage = () => {
   return (
     <Page width="100vw" height="100vh">
       <Flex direction={"row"} justify={"space-between"} h={"inherit"}>
-        <Flex w={"20%"} direction={"column"}>
-          <Group align="center" gap={SIZE.extraLarge} p={SIZE.extraLarge}>
-            <Image src={twitterLogo} alt="Twitter Logo" h={"2.5rem"} />
-            <Heading text="twitter" fontWeight={800} fontSize="2.5rem" />
-          </Group>
-          <SidePanel />
-        </Flex>
+        <NavPanel width="20%" />
         <Divider orientation="vertical" />
-        <Flex w={"50%"} h={"100%"}>
-          <Tweets />
-        </Flex>
+        <TweetsPanel width="50%" />
         <Divider orientation="vertical" />
-        <Flex w={"30%"} justify={"flex-end"}>
-          <CreateButton
-            size={SIZE.medium}
-            handleClick={handleLogout}
-            value="Logout"
-          />
-        </Flex>
+        <ProfilePanel width="30%" handleLogout={handleLogout} />
       </Flex>
     </Page>
   );
