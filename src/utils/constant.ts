@@ -15,13 +15,13 @@ export const SIZE = {
 } as const;
 
 export const INIT_LOGIN_FORM_VALUES = {
-  username: EMPTYSTRING,
+  email: EMPTYSTRING,
   password: EMPTYSTRING,
 };
 
 export const INIT_SIGNUP_FORM_VALUES = {
   ...INIT_LOGIN_FORM_VALUES,
-  email: EMPTYSTRING,
+  username: EMPTYSTRING,
 };
 
 export const FORM_ERROR = {

@@ -8,11 +8,12 @@ import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
 
 const useHandleLogin = () => {
+  const navigate = useNavigate();
   const app = initializeApp(FIREBASE_CONFIG);
   const auth = getAuth(app);
-  const updateUID = useLoginStore((state) => state.updateUID);
-  const navigate = useNavigate();
   const UID = useLoginStore((state) => state.UID);
+  const updateUID = useLoginStore((state) => state.updateUID);
+  const updateUsername = useLoginStore((state) => state.updateUsername);
 
   useEffect(() => {
     if (UID !== EMPTYSTRING) {
@@ -21,10 +22,14 @@ const useHandleLogin = () => {
   }, [UID, navigate]);
 
   const handleLogin: THandleLogin = async (values) => {
-    const { username, password } = values;
+    const { email, password } = values;
 
-    const { user } = await signInWithEmailAndPassword(auth, username, password);
-    updateUID(user.uid);
+    const { user } = await signInWithEmailAndPassword(auth, email, password);
+    const { uid, displayName } = user;
+
+    updateUID(uid);
+    updateUsername(displayName as string);
+
     navigate(PATH.home);
   };
 

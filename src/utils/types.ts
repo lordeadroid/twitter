@@ -3,7 +3,7 @@ export type TValidateFormEntry = (value: string) => string | null;
 export type TValidatorFn = (value: string) => boolean;
 
 export type TLoginFormData = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -20,7 +20,6 @@ export type TLoginStore = {
   updateUID: (uid: string) => void;
   username: string;
   updateUsername: (username: string) => void;
-  resetUsername: () => void;
 };
 
 export type TTweet = {

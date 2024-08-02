@@ -34,8 +34,8 @@ const LoginPage = () => {
           <TextInput
             w={"23rem"}
             size={SIZE.medium}
-            placeholder={FORM_FIELD.username}
-            {...loginForm.getInputProps(FORM_FIELD.username)}
+            placeholder={FORM_FIELD.email}
+            {...loginForm.getInputProps(FORM_FIELD.email)}
           />
           <PasswordInput
             w={"23rem"}

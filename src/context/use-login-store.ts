@@ -10,7 +10,6 @@ const useLoginStore = create<TLoginStore>()(
       updateUID: (uid) => set(() => ({ UID: uid })),
       username: EMPTYSTRING,
       updateUsername: (username) => set({ username }),
-      resetUsername: () => set({ username: EMPTYSTRING }),
     }),
     { name: STORE.login },
   ),
