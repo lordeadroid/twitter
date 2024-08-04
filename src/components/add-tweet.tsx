@@ -14,14 +14,14 @@ const AddTweet = () => {
   const refreshTweets = useTweetStore((state) => state.refreshTweets);
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newMessage = event.target.value;
+    const newMessage = event.target.value.trim();
 
     setMessage(newMessage);
     setButtonState(newMessage.length === 0);
   };
 
   const handleSubmit = () => {
-    updateTweets(UID, username, message.trim());
+    updateTweets(UID, username, message);
     setMessage(EMPTYSTRING);
     refreshTweets();
   };
