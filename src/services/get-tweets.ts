@@ -6,7 +6,7 @@ const getTweets = async (uid: string, queryLimit = 10): Promise<TTweet[]> => {
   const tweetsQuery = query(
     collection(db, DB.tweets),
     orderBy("timestamp", "desc"),
-    where("uid", "==", uid),
+    where("UID", "==", uid),
     limit(queryLimit),
   );
 
