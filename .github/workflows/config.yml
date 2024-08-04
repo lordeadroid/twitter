@@ -23,4 +23,4 @@ jobs:
         run: npm install
 
       - name: Tests
-        run: npm run coverage
+        run: npm run test
