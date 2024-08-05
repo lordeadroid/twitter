@@ -3,7 +3,6 @@ import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PATH } from "../../utils/constant";
-import useHandleLogout from "../../hooks/use-handle-logout";
 import Page from "../../components/Page";
 import ProfilePanel from "../../components/profile-panel";
 import TweetsPanel from "../../components/tweets-panel";
@@ -12,7 +11,6 @@ import NavPanel from "../../components/nav-panel";
 const HomePage = () => {
   const navigate = useNavigate();
   const loginStatus = useLoginStore((state) => state.loginStatus);
-  const handleLogout = useHandleLogout();
 
   useEffect(() => {
     if (!loginStatus) {
@@ -27,7 +25,7 @@ const HomePage = () => {
         <Divider orientation="vertical" />
         <TweetsPanel width="50%" />
         <Divider orientation="vertical" />
-        <ProfilePanel width="30%" handleLogout={handleLogout} />
+        <ProfilePanel width="30%" />
       </Flex>
     </Page>
   );
