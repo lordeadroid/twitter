@@ -2,7 +2,8 @@ import { Divider, Flex } from "@mantine/core";
 import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { PATH } from "../../utils/constant";
+import { EMPTYSTRING, PATH } from "../../utils/constant";
+import useHandleLogout from "../../hooks/use-handle-logout";
 import Page from "../../components/Page";
 import ProfilePanel from "../../components/profile-panel";
 import TweetsPanel from "../../components/tweets-panel";
@@ -10,13 +11,14 @@ import NavPanel from "../../components/nav-panel";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const loginStatus = useLoginStore((state) => state.loginStatus);
+  const UID = useLoginStore((state) => state.UID);
+  const handleLogout = useHandleLogout();
 
   useEffect(() => {
-    if (!loginStatus) {
+    if (UID === EMPTYSTRING) {
       navigate(PATH.login);
     }
-  }, [loginStatus, navigate]);
+  }, [UID, navigate]);
 
   return (
     <Page width="100vw" height="100vh">

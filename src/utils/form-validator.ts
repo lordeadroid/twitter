@@ -13,9 +13,19 @@ const validatePassword: TValidateFormEntry = (value) => {
   return isValidPassword(value) ? FORM_ERROR.password : null;
 };
 
-const formValidator = {
+const isValidUsername: TValidatorFn = (value) => value.length < VALID.username;
+
+const validateUsername: TValidateFormEntry = (value) => {
+  return isValidUsername(value) ? FORM_ERROR.username : null;
+};
+
+export const loginFormValidator = {
   email: validateEmail,
   password: validatePassword,
 };
 
-export default formValidator;
+export const signupFormValidator = {
+  email: validateEmail,
+  password: validatePassword,
+  username: validateUsername,
+};
