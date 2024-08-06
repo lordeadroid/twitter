@@ -45,8 +45,24 @@ export const DB = { tweets: "tweets" };
 
 export const TWEET_LIMIT = 140;
 
-export const FORM_FIELD = {
-  username: "username",
+export const LOGIN_FORM_FIELD = {
   email: "email",
   password: "password",
+} as const;
+
+export const SIGNUP_FORM_FIELD = {
+  email: "email",
+  password: "password",
+  username: "username",
+} as const;
+
+export const LOGIN_FORM_PLACEHOLDER = {
+  email: "Enter Email",
+  password: "Enter Password",
+} as const;
+
+export const SIGNUP_FORM_PLACEHOLDER = {
+  email: "Enter Email",
+  password: "Enter Password",
+  username: "Enter Username",
 } as const;

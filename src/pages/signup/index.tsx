@@ -5,7 +5,12 @@ import Button from "../../components/button";
 import useSignupForm from "../../hooks/signup/use-signup-form";
 import useHandleSignup from "../../hooks/signup/use-handle-signup";
 import { Link } from "react-router-dom";
-import { FORM_FIELD, PATH, SIZE } from "../../utils/constant";
+import {
+  SIGNUP_FORM_FIELD,
+  PATH,
+  SIZE,
+  SIGNUP_FORM_PLACEHOLDER,
+} from "../../utils/constant";
 import { Flex, PasswordInput, Text, TextInput } from "@mantine/core";
 
 const SignupPage = () => {
@@ -34,21 +39,24 @@ const SignupPage = () => {
           <TextInput
             w={"23rem"}
             size={SIZE.medium}
-            placeholder={FORM_FIELD.username}
-            {...signupForm.getInputProps(FORM_FIELD.username)}
+            style={{ fontStyle: "italic" }}
+            placeholder={SIGNUP_FORM_PLACEHOLDER.username}
+            {...signupForm.getInputProps(SIGNUP_FORM_FIELD.username)}
           />
 
           <TextInput
             w={"23rem"}
             size={SIZE.medium}
-            placeholder={FORM_FIELD.email}
-            {...signupForm.getInputProps(FORM_FIELD.email)}
+            style={{ fontStyle: "italic" }}
+            placeholder={SIGNUP_FORM_PLACEHOLDER.email}
+            {...signupForm.getInputProps(SIGNUP_FORM_FIELD.email)}
           />
           <PasswordInput
             w={"23rem"}
             size={SIZE.medium}
-            placeholder={FORM_FIELD.password}
-            {...signupForm.getInputProps(FORM_FIELD.password)}
+            style={{ fontStyle: "italic" }}
+            placeholder={SIGNUP_FORM_PLACEHOLDER.password}
+            {...signupForm.getInputProps(SIGNUP_FORM_FIELD.password)}
           />
         </Flex>
         <Button

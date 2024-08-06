@@ -5,7 +5,12 @@ import Button from "../../components/button";
 import useLoginForm from "../../hooks/login/use-login-form";
 import useHandleLogin from "../../hooks/login/use-handle-login";
 import { Link } from "react-router-dom";
-import { FORM_FIELD, PATH, SIZE } from "../../utils/constant";
+import {
+  LOGIN_FORM_FIELD,
+  LOGIN_FORM_PLACEHOLDER,
+  PATH,
+  SIZE,
+} from "../../utils/constant";
 import { Flex, PasswordInput, Text, TextInput } from "@mantine/core";
 
 const LoginPage = () => {
@@ -34,14 +39,16 @@ const LoginPage = () => {
           <TextInput
             w={"23rem"}
             size={SIZE.medium}
-            placeholder={FORM_FIELD.email}
-            {...loginForm.getInputProps(FORM_FIELD.email)}
+            style={{ fontStyle: "italic" }}
+            placeholder={LOGIN_FORM_PLACEHOLDER.email}
+            {...loginForm.getInputProps(LOGIN_FORM_FIELD.email)}
           />
           <PasswordInput
             w={"23rem"}
             size={SIZE.medium}
-            placeholder={FORM_FIELD.password}
-            {...loginForm.getInputProps(FORM_FIELD.password)}
+            style={{ fontStyle: "italic" }}
+            placeholder={LOGIN_FORM_PLACEHOLDER.password}
+            {...loginForm.getInputProps(LOGIN_FORM_FIELD.password)}
           />
         </Flex>
         <Button
