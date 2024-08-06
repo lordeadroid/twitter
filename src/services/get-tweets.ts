@@ -1,12 +1,19 @@
 import { DB } from "../utils/constant";
 import { TTweet } from "../utils/types";
-import db, { collection, getDocs } from "./db";
+import db, { collection, getDocs, limit, orderBy, query, where } from "./db";
 
-const getTweets = async (): Promise<TTweet[]> => {
-  const queryData = await getDocs(collection(db, DB.tweets));
-  const tweetsData = queryData.docs.map((doc) => doc.data() as TTweet);
+const getTweets = async (uid: string, queryLimit = 10): Promise<TTweet[]> => {
+  const tweetsQuery = query(
+    collection(db, DB.tweets),
+    orderBy("timestamp", "desc"),
+    where("UID", "==", uid),
+    limit(queryLimit),
+  );
 
-  return tweetsData;
+  const queryData = await getDocs(tweetsQuery);
+  const tweets = queryData.docs.map((doc) => doc.data() as TTweet);
+
+  return tweets;
 };
 
 export default getTweets;

@@ -5,6 +5,7 @@ import Heading from "./Heading";
 import getTweets from "../services/get-tweets";
 import { TTweet } from "../utils/types";
 import useTweetStore from "../context/use-tweet-store";
+import useLoginStore from "../context/use-login-store";
 
 const Tweet = ({ tweet }: { tweet: TTweet }) => {
   const date = new Date(tweet.timestamp).toDateString();
@@ -32,14 +33,15 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
 
 const TweetsPanel = ({ width }: { width: string }) => {
   const rerenderTweets = useTweetStore((state) => state.rerenderTweets);
+  const uid = useLoginStore((state) => state.UID);
   const [tweets, setTweets] = useState<TTweet[] | null>(null);
 
   useEffect(() => {
     (async () => {
-      const tweetsData = await getTweets();
+      const tweetsData = await getTweets(uid);
       setTweets(tweetsData);
     })();
-  }, [rerenderTweets]);
+  }, [rerenderTweets, uid]);
 
   return (
     <Flex direction={"column"} p={SIZE.extraLarge} w={width} gap={SIZE.medium}>

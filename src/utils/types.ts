@@ -8,7 +8,7 @@ export type TLoginFormData = {
 };
 
 export type TSignupFormData = TLoginFormData & {
-  number: string;
+  username: string;
 };
 
 export type THandleLogin = (values: TLoginFormData) => void;
@@ -16,16 +16,14 @@ export type THandleLogin = (values: TLoginFormData) => void;
 export type THandleSignup = (values: TSignupFormData) => void;
 
 export type TLoginStore = {
-  loginStatus: boolean;
-  updateLoginStatus: () => void;
-  email: string;
-  updateEmail: (email: string) => void;
-  resetEmail: () => void;
+  UID: string;
+  updateUID: (uid: string) => void;
+  username: string;
+  updateUsername: (username: string) => void;
 };
 
 export type TTweet = {
   username: string;
   message: string;
   timestamp: number;
-  likes?: number;
 };

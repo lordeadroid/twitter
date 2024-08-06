@@ -1,9 +1,10 @@
 import { DB } from "../utils/constant";
 import db, { collection, addDoc } from "./db";
 
-const updateTweets = async (username: string, message: string) => {
+const updateTweets = async (UID: string, username: string, message: string) => {
   try {
     await addDoc(collection(db, DB.tweets), {
+      UID,
       username,
       message,
       timestamp: Date.now(),

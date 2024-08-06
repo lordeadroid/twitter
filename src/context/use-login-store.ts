@@ -6,15 +6,13 @@ import { TLoginStore } from "../utils/types";
 const useLoginStore = create<TLoginStore>()(
   persist(
     (set) => ({
-      loginStatus: false,
-      updateLoginStatus: () =>
-        set((state) => ({ loginStatus: !state.loginStatus })),
-      email: EMPTYSTRING,
-      updateEmail: (email) => set({ email }),
-      resetEmail: () => set({ email: EMPTYSTRING }),
+      UID: EMPTYSTRING,
+      updateUID: (uid) => set(() => ({ UID: uid })),
+      username: EMPTYSTRING,
+      updateUsername: (username) => set({ username }),
     }),
-    { name: STORE.login }
-  )
+    { name: STORE.login },
+  ),
 );
 
 export default useLoginStore;

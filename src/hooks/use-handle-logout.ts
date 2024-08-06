@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import useLoginStore from "../context/use-login-store";
-import { PATH } from "../utils/constant";
+import { EMPTYSTRING, PATH } from "../utils/constant";
 
 const useHandleLogout = () => {
   const navigate = useNavigate();
-  const updateLoginStatus = useLoginStore((state) => state.updateLoginStatus);
-  const resetEmail = useLoginStore((state) => state.resetEmail);
+  const updateUID = useLoginStore((state) => state.updateUID);
+  const updateUsername = useLoginStore((state) => state.updateUsername);
 
   const handleLogout = () => {
-    updateLoginStatus();
-    resetEmail();
+    updateUID(EMPTYSTRING);
+    updateUsername(EMPTYSTRING);
     navigate(PATH.login);
   };
 
