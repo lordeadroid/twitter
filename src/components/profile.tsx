@@ -1,6 +1,5 @@
-import { Avatar, Card, Text } from "@mantine/core";
+import { Avatar, Button, Card, Flex, Text } from "@mantine/core";
 import useHandleLogout from "../hooks/use-handle-logout";
-import Button from "./button";
 import getImgURL from "../utils/get-img-url";
 import useLoginStore from "../context/use-login-store";
 
@@ -23,14 +22,14 @@ const Profile = () => {
           {username}
         </Text>
       </Card.Section>
-      <Button
-        fullWidth
-        radius="md"
-        mt="xl"
-        size="md"
-        value="Logout"
-        handleClick={handleLogout}
-      />
+      <Flex justify="space-between" mt="4rem">
+        <Button w="12rem" variant="outline" color="primary">
+          Full Profile
+        </Button>
+        <Button onClick={handleLogout} w="12rem">
+          Logout
+        </Button>
+      </Flex>
     </Card>
   );
 };
