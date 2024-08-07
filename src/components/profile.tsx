@@ -1,9 +1,8 @@
-import { Avatar, Card } from "@mantine/core";
+import { Avatar, Card, Text } from "@mantine/core";
 import useHandleLogout from "../hooks/use-handle-logout";
 import Button from "./button";
 import getImgURL from "../utils/get-img-url";
 import useLoginStore from "../context/use-login-store";
-import Heading from "./Heading";
 
 const Profile = () => {
   const handleLogout = useHandleLogout();
@@ -20,7 +19,9 @@ const Profile = () => {
       />
       <Card.Section>
         <Avatar src={avatar} size={150} radius="50%" mx="auto" mt={-100} />
-        <Heading text={username} ta="center" fz="xl" fw={700} mt="sm" />
+        <Text ta="center" fz="xl" fw={700} mt="sm">
+          {username}
+        </Text>
       </Card.Section>
       <Button
         fullWidth

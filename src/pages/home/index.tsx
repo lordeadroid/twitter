@@ -3,7 +3,6 @@ import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
-import useHandleLogout from "../../hooks/use-handle-logout";
 import Page from "../../components/Page";
 import ProfilePanel from "../../components/profile-panel";
 import TweetsPanel from "../../components/tweets-panel";
@@ -12,7 +11,6 @@ import NavPanel from "../../components/nav-panel";
 const HomePage = () => {
   const navigate = useNavigate();
   const UID = useLoginStore((state) => state.UID);
-  const handleLogout = useHandleLogout();
 
   useEffect(() => {
     if (UID === EMPTYSTRING) {

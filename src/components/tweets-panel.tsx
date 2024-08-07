@@ -1,7 +1,7 @@
 import { Flex, Group, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { SIZE } from "../utils/constant";
-import Heading from "./Heading";
+
 import getTweets from "../services/get-tweets";
 import { TTweet } from "../utils/types";
 import useTweetStore from "../context/use-tweet-store";
@@ -19,11 +19,9 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
       style={{ borderRadius: "1rem" }}
     >
       <Group justify="space-between">
-        <Heading
-          text={tweet.username}
-          fontWeight={700}
-          fontSize={SIZE.extraLarge}
-        />
+        <Text fw={700} fz={SIZE.extraLarge}>
+          {tweet.username}
+        </Text>
         <Text size={SIZE.extraSmall}>{date}</Text>
       </Group>
       <Text p={"0 2rem"}>{tweet.message}</Text>

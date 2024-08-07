@@ -1,6 +1,5 @@
 import Form from "../../components/Form";
 import Page from "../../components/Page";
-import Heading from "../../components/Heading";
 import Button from "../../components/button";
 import useLoginForm from "../../hooks/login/use-login-form";
 import useHandleLogin from "../../hooks/login/use-handle-login";
@@ -27,13 +26,9 @@ const LoginPage = () => {
 
   return (
     <Page height="100vh" justify="center" align="center">
-      <Heading
-        text="Login To Twitter"
-        fontSize="3rem"
-        fontWeight={700}
-        color="primary.9"
-        width="25rem"
-      />
+      <Text fz="3rem" fw={700} c="primary.9" w="25rem">
+        Login To Twitter
+      </Text>
       <Form handleLogin={loginForm.onSubmit(handleLogin)} style={style}>
         <Flex gap={"2vh"} direction={"column"}>
           <TextInput
