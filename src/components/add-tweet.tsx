@@ -17,7 +17,9 @@ const AddTweet = () => {
     const newMessage = event.target.value;
 
     setMessage(newMessage);
-    setButtonState(newMessage.trim().length === 0);
+    setButtonState(
+      newMessage.trim().length === 0 || newMessage.trim().length > TWEET_LIMIT
+    );
   };
 
   const handleSubmit = () => {
