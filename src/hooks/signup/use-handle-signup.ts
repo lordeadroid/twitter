@@ -5,11 +5,8 @@ import { EMPTYSTRING, PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
 import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import addUser from "../../services/create-user";
 
 const useHandleSignup = () => {
   const app = initializeApp(FIREBASE_CONFIG);
@@ -33,7 +30,8 @@ const useHandleSignup = () => {
       email,
       password,
     );
-    updateProfile(user, { displayName: username });
+
+    addUser(user);
     updateUID(user.uid);
     updateUsername(username);
 
