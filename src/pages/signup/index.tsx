@@ -1,6 +1,5 @@
 import Form from "../../components/Form";
 import Page from "../../components/Page";
-import Heading from "../../components/Heading";
 import Button from "../../components/button";
 import useSignupForm from "../../hooks/signup/use-signup-form";
 import useHandleSignup from "../../hooks/signup/use-handle-signup";
@@ -27,13 +26,9 @@ const SignupPage = () => {
 
   return (
     <Page height="100vh" justify="center" align="center">
-      <Heading
-        text="Join Twitter Now"
-        fontSize="3rem"
-        fontWeight={700}
-        color="primary.9"
-        width="25rem"
-      />
+      <Text fz="3rem" fw={700} c="primary.9" w="25rem">
+        Join Twitter Now
+      </Text>
       <Form handleLogin={signupForm.onSubmit(handleSignup)} style={style}>
         <Flex gap={"2vh"} direction={"column"}>
           <TextInput

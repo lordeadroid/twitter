@@ -4,7 +4,6 @@ import homeIcon from "/home.png";
 import exploreIcon from "/explore.png";
 import messagesIcon from "/messages.png";
 import twitterLogo from "/favicon.png";
-import Heading from "./Heading";
 
 const NavPanel = ({ width }: { width: string }) => {
   const menuOptions = [
@@ -18,7 +17,9 @@ const NavPanel = ({ width }: { width: string }) => {
       <Flex>
         <Group align="center" gap={SIZE.extraLarge} p={SIZE.extraLarge}>
           <Image src={twitterLogo} alt="Twitter Logo" h={"2.5rem"} />
-          <Heading text="twitter" fontWeight={800} fontSize="2.5rem" />
+          <Text fw={800} fz="2.5rem">
+            twitter
+          </Text>
         </Group>
       </Flex>
       <Flex p={SIZE.medium} direction={"column"}>
