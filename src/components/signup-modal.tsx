@@ -53,7 +53,7 @@ const SignupModal = () => {
               {...signupForm.getInputProps(SIGNUP_FORM_FIELD.password)}
             />
           </Flex>
-          <Button size="md" w="8rem" color="primary.5">
+          <Button type="submit" size="md" w="8rem" color="primary.5">
             Signup
           </Button>
         </Form>
