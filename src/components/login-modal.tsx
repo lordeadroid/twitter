@@ -28,7 +28,7 @@ const LoginModal = () => {
 
   return (
     <Flex>
-      <Modal opened={opened} onClose={close} size="30rem" centered radius='lg'>
+      <Modal opened={opened} onClose={close} size="30rem" centered radius="lg">
         <Text fz="3rem" fw={700} c="primary.9" ta="center">
           Login To Twitter
         </Text>
@@ -52,7 +52,9 @@ const LoginModal = () => {
           </Button>
         </Form>
       </Modal>
-      <Button onClick={open}>Login</Button>
+      <Button onClick={open} size="lg">
+        Login
+      </Button>
     </Flex>
   );
 };

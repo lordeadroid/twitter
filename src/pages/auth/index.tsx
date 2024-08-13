@@ -5,11 +5,11 @@ import { Flex, Image, Text } from "@mantine/core";
 
 const AuthPage = () => {
   return (
-    <Flex h="100vh" w="100vw" justify="space-evenly">
+    <Flex h="100vh" w="100vw" justify="space-evenly" bg="aliceblue">
       <Flex justify="center" align="center">
         <Image alt="twitter logo" src={twitterLogo} />
       </Flex>
-      <Flex direction="column" p="10% 0" gap="xl">
+      <Flex direction="column" justify="space-evenly">
         <Flex direction="column">
           <Text fw={700} fz="4rem">
             Happening now

@@ -58,7 +58,9 @@ const SignupModal = () => {
           </Button>
         </Form>
       </Modal>
-      <Button onClick={open}>Signup</Button>
+      <Button onClick={open} size="lg">
+        Signup
+      </Button>
     </Flex>
   );
 };

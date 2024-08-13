@@ -1,7 +1,6 @@
 import { Flex } from "@mantine/core";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import HomePage from "./pages/home";
-import SignupPage from "./pages/signup";
 import ErrorPage from "./pages/error";
 import AuthPage from "./pages/auth";
 
@@ -20,7 +19,6 @@ const Router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/auth", element: <AuthPage /> },
-      { path: "/signup", element: <SignupPage /> },
     ],
     errorElement: <ErrorPage />,
   },
