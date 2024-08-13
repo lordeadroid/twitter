@@ -2,8 +2,6 @@ export const EMPTYSTRING = "";
 
 export const PATH = {
   home: "/",
-  login: "/login",
-  signup: "/signup",
   auth: "/auth",
 } as const;
 
