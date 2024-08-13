@@ -4,6 +4,7 @@ import HomePage from "./pages/home";
 import LoginPage from "./pages/login";
 import SignupPage from "./pages/signup";
 import ErrorPage from "./pages/error";
+import AuthPage from "./pages/auth";
 
 const Layout = () => {
   return (
@@ -19,6 +20,7 @@ const Router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <HomePage /> },
+      { path: "/auth", element: <AuthPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/signup", element: <SignupPage /> },
     ],

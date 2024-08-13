@@ -4,6 +4,7 @@ export const PATH = {
   home: "/",
   login: "/login",
   signup: "/signup",
+  auth: "/auth",
 } as const;
 
 export const SIZE = {
