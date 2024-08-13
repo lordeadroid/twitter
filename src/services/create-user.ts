@@ -1,12 +1,11 @@
+import { DB_NAME } from "../utils/constant";
 import db, { collection, addDoc } from "./db";
 
-const addUser = async (UID: string, username: string, message: string) => {
+const saveUser = async (UID: string, username: string) => {
   try {
-    await addDoc(collection(db, "users"), {
+    await addDoc(collection(db, DB_NAME.users), {
       UID,
       username,
-      message,
-      timestamp: Date.now(),
     });
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -14,4 +13,4 @@ const addUser = async (UID: string, username: string, message: string) => {
   }
 };
 
-export default addUser;
+export default saveUser;

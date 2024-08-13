@@ -1,12 +1,12 @@
+import saveUser from "../../services/create-user";
+import useLoginStore from "../../context/use-login-store";
+import FIREBASE_CONFIG from "../../utils/firebase-config";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { THandleSignup } from "../../utils/types";
-import FIREBASE_CONFIG from "../../utils/firebase-config";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
-import { useNavigate } from "react-router-dom";
-import useLoginStore from "../../context/use-login-store";
-import { useEffect } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import addUser from "../../services/create-user";
 
 const useHandleSignup = () => {
   const app = initializeApp(FIREBASE_CONFIG);
@@ -28,10 +28,10 @@ const useHandleSignup = () => {
     const { user } = await createUserWithEmailAndPassword(
       auth,
       email,
-      password,
+      password
     );
 
-    addUser(user);
+    saveUser(user.uid, username);
     updateUID(user.uid);
     updateUsername(username);
 
