@@ -1,6 +1,7 @@
 import twitterLogo from "/favicon.png";
 import LoginModal from "../../components/login-modal";
-import { Button, Flex, Image, Text } from "@mantine/core";
+import SignupModal from "../../components/signup-modal";
+import { Flex, Image, Text } from "@mantine/core";
 
 const AuthPage = () => {
   return (
@@ -19,7 +20,7 @@ const AuthPage = () => {
         </Flex>
         <Flex gap="xl">
           <LoginModal />
-          <Button>Signup</Button>
+          <SignupModal />
         </Flex>
       </Flex>
     </Flex>
