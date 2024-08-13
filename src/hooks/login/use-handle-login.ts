@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { THandleLogin } from "../../utils/types";
 import useLoginStore from "../../context/use-login-store";
 import { useEffect } from "react";
+import findUsername from "../../services/find-username";
 
 const useHandleLogin = () => {
   const navigate = useNavigate();
@@ -25,10 +26,10 @@ const useHandleLogin = () => {
     const { email, password } = values;
 
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-    const { uid, displayName } = user;
+    const username = await findUsername(user.uid);
 
-    updateUID(uid);
-    updateUsername(displayName as string);
+    updateUID(user.uid);
+    updateUsername(username);
 
     navigate(PATH.home);
   };
