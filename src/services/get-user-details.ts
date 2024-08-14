@@ -17,11 +17,7 @@ const getUserDetails = async (uid: string | null): Promise<TUser[]> => {
 
   if (uid) {
     const userDetail = userDetails.find(
-<<<<<<< HEAD
       (element) => element.UID === uid,
-=======
-      (element) => element.UID === uid
->>>>>>> 44e765c (refact: updated user query function)
     ) as TUser;
     return [userDetail];
   }
