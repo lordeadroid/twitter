@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import useLoginStore from "../../context/use-login-store";
 import { Avatar, Table, Text, Flex, Button } from "@mantine/core";
@@ -85,10 +84,6 @@ const ExplorePage = () => {
       </Table.ScrollContainer>
     </Page>
   );
-=======
-const ExplorePage = () => {
-  return <h1>explore</h1>;
->>>>>>> a3cd216 (fix: added mising file)
 };
 
 export default ExplorePage;
