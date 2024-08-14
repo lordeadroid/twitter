@@ -19,13 +19,13 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
       <Flex justify="space-between" align="center" p="1rem 1rem 0.5rem 1rem">
         <Flex gap="sm" align="center">
           <Image radius="50%" h="xl" alt="profile image" src={twitterLogo} />
-          <Text fw={700} fz="lg">
+          <Text fw={700} fz="xl">
             {tweet.username}
           </Text>
         </Flex>
         <Text size="sm">{date}</Text>
       </Flex>
-      <Text pl="3.8rem" pb="1rem">
+      <Text pl="3.8rem" pb="1rem" fz='lg'>
         {tweet.message}
       </Text>
     </Flex>
