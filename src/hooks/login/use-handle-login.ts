@@ -1,12 +1,12 @@
-import { initializeApp } from "firebase/app";
 import FIREBASE_CONFIG from "../../utils/firebase-config";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { EMPTYSTRING, PATH } from "../../utils/constant";
+import useLoginStore from "../../context/use-login-store";
+import getUserDetails from "../../services/get-user-details";
+import { useEffect } from "react";
+import { initializeApp } from "firebase/app";
 import { useNavigate } from "react-router-dom";
 import { THandleLogin } from "../../utils/types";
-import useLoginStore from "../../context/use-login-store";
-import { useEffect } from "react";
-import findUsername from "../../services/find-username";
+import { EMPTYSTRING, PATH } from "../../utils/constant";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const useHandleLogin = () => {
   const navigate = useNavigate();
@@ -14,6 +14,7 @@ const useHandleLogin = () => {
   const auth = getAuth(app);
   const UID = useLoginStore((state) => state.UID);
   const updateUID = useLoginStore((state) => state.updateUID);
+  const updateImages = useLoginStore((state) => state.updateImages);
   const updateUsername = useLoginStore((state) => state.updateUsername);
 
   useEffect(() => {
@@ -26,10 +27,11 @@ const useHandleLogin = () => {
     const { email, password } = values;
 
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-    const username = await findUsername(user.uid);
+    const userDetails = await getUserDetails(user.uid);
 
     updateUID(user.uid);
-    updateUsername(username);
+    updateUsername(userDetails.username);
+    updateImages(userDetails.images);
 
     navigate(PATH.home);
   };
