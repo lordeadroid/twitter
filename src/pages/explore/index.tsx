@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import getUserDetails, { TUser } from "../../services/get-user-details";
 import { Avatar, Table, Text, Flex, Button } from "@mantine/core";
+import useLoginStore from "../../context/use-login-store";
 
 const ExplorePage = () => {
+  const uid = useLoginStore((state) => state.UID);
   const [users, setUsers] = useState<TUser[] | null>(null);
 
   useEffect(() => {
     getUserDetails(null).then((users: TUser[]) => {
-      setUsers(users);
+      setUsers(users.filter((user) => user.UID !== uid));
     });
-  }, []);
+  }, [uid]);
 
   return (
     <Table.ScrollContainer minWidth={800} w="100%" p="xl">
