@@ -1,21 +1,24 @@
-import db, { collection, getDocs, query, where } from "./db";
+import db, { collection, getDocs, query } from "./db";
 import { TImages } from "../utils/types";
 import { DB_NAME } from "../utils/constant";
 
-type TUser = {
+export type TUser = {
   UID: string;
   username: string;
   images: TImages;
 };
 
-const getUserDetails = async (uid: string): Promise<TUser> => {
-  const tweetsQuery = query(
-    collection(db, DB_NAME.users),
-    where("UID", "==", uid)
-  );
+const getUserDetails = async (uid: string | null): Promise<TUser[]> => {
+  const userQuery = query(collection(db, DB_NAME.users));
+  const queryData = await getDocs(userQuery);
+  const userDetails = queryData.docs.map((doc) => doc.data()) as TUser[];
 
-  const queryData = await getDocs(tweetsQuery);
-  const [userDetails] = queryData.docs.map((doc) => doc.data() as TUser);
+  if (uid) {
+    const userDetail = userDetails.find(
+      (element) => element.UID === uid
+    ) as TUser;
+    return [userDetail];
+  }
 
   return userDetails;
 };

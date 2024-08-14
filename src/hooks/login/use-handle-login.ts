@@ -27,11 +27,11 @@ const useHandleLogin = () => {
     const { email, password } = values;
 
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-    const userDetails = await getUserDetails(user.uid);
+    const [userDetail] = await getUserDetails(user.uid);
 
     updateUID(user.uid);
-    updateUsername(userDetails.username);
-    updateImages(userDetails.images);
+    updateUsername(userDetail.username);
+    updateImages(userDetail.images);
 
     navigate(PATH.home);
   };
