@@ -17,7 +17,7 @@ const getUserDetails = async (uid: string | null): Promise<TUser[]> => {
 
   if (uid) {
     const userDetail = userDetails.find(
-      (element) => element.UID === uid
+      (element) => element.UID === uid,
     ) as TUser;
     return [userDetail];
   }
