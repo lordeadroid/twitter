@@ -1,26 +1,10 @@
-import { Flex } from "@mantine/core";
+import { Flex, FlexProps } from "@mantine/core";
 
-type TPage = {
-  height?: string;
-  width?: string;
-  justify?: string;
-  align?: string;
-  children: JSX.Element[] | JSX.Element;
-};
-
-const Page = (props: TPage) => {
-  const { height, width, justify, align, children } = props;
+const Page = (props: FlexProps) => {
+  const { h = "100vh", w = "100vw", children, ...restProps } = props;
 
   return (
-    <Flex
-      h={height}
-      w={width}
-      p={"3rem 6rem"}
-      direction={"column"}
-      gap={"8vh"}
-      justify={justify}
-      align={align}
-    >
+    <Flex p="3rem 6rem" h={h} w={w} {...restProps}>
       {children}
     </Flex>
   );
