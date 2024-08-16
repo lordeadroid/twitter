@@ -7,12 +7,13 @@ import useLoginStore from "../context/use-login-store";
 const Requests = ({ uid }: { uid: string }) => {
   const username = useLoginStore((state) => state.username);
   const [userData, setUserData] = useState<TUser | null>(null);
+  const [updatePage, setUpdatePage] = useState(Date.now());
 
   useEffect(() => {
     getUserDetails(uid).then(([userData]) => {
       setUserData(userData);
     });
-  }, [uid]);
+  }, [uid, updatePage]);
 
   return (
     <Flex
@@ -38,13 +39,21 @@ const Requests = ({ uid }: { uid: string }) => {
               <Flex gap="xl">
                 <Button
                   color="lime"
-                  onClick={() => approveRequest(username, element)}
+                  onClick={() => {
+                    approveRequest(username, element).then(() => {
+                      setUpdatePage(Date.now());
+                    });
+                  }}
                 >
                   Approve
                 </Button>
                 <Button
                   color="pink"
-                  onClick={() => cancelRequest(username, element)}
+                  onClick={() => {
+                    cancelRequest(username, element).then(() => {
+                      setUpdatePage(Date.now());
+                    });
+                  }}
                 >
                   Cancel
                 </Button>
