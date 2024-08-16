@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import getUserDetails, { TUser } from "../services/get-user-details";
 import { Avatar, Button, Flex, Text } from "@mantine/core";
+import { approveRequest, cancelRequest } from "../services/requests";
+import useLoginStore from "../context/use-login-store";
 
 const Requests = ({ uid }: { uid: string }) => {
+  const username = useLoginStore((state) => state.username);
   const [userData, setUserData] = useState<TUser | null>(null);
 
   useEffect(() => {
@@ -33,8 +36,18 @@ const Requests = ({ uid }: { uid: string }) => {
                 <Text fz="1rem">{element}</Text>
               </Flex>
               <Flex gap="xl">
-                <Button color="lime">Approve</Button>
-                <Button color="pink">Cancel</Button>
+                <Button
+                  color="lime"
+                  onClick={() => approveRequest(username, element)}
+                >
+                  Approve
+                </Button>
+                <Button
+                  color="pink"
+                  onClick={() => cancelRequest(username, element)}
+                >
+                  Cancel
+                </Button>
               </Flex>
             </Flex>
           );

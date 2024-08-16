@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import addFriend from "../../services/add-friend";
 import useLoginStore from "../../context/use-login-store";
 import { Avatar, Table, Text, Flex, Button } from "@mantine/core";
 import getUserDetails, { TUser } from "../../services/get-user-details";
 import Requests from "../../components/requests";
+import { addFriend } from "../../services/requests";
 
 const UserProfile = ({
   userData,
@@ -32,7 +32,7 @@ const UserProfile = ({
           <Flex gap="md">
             <Button
               color={status ? "green" : "blue"}
-              onClick={() => handleClick(userData.UID)}
+              onClick={() => handleClick(userData.username)}
             >
               {status ? "Requested" : "Add Friend"}
             </Button>
