@@ -11,7 +11,7 @@ export const addFriend = async (requester: string, requestee: string) => {
 
 export const cancelRequest = async (
   username: string,
-  requesterUsername: string
+  requesterUsername: string,
 ) => {
   const docRef = doc(db, DB_NAME.users, username);
 
@@ -20,9 +20,20 @@ export const cancelRequest = async (
   });
 };
 
+export const updateRequest = async (
+  username: string,
+  requesterUsername: string,
+) => {
+  const docRef = doc(db, DB_NAME.users, requesterUsername);
+
+  await updateDoc(docRef, {
+    friends: arrayUnion(username),
+  });
+};
+
 export const approveRequest = async (
   username: string,
-  requesterUsername: string
+  requesterUsername: string,
 ) => {
   const docRef = doc(db, DB_NAME.users, username);
 
@@ -31,4 +42,5 @@ export const approveRequest = async (
   });
 
   cancelRequest(username, requesterUsername);
+  updateRequest(username, requesterUsername);
 };
