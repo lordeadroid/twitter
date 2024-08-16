@@ -1,13 +1,15 @@
-import db, { collection, addDoc } from "./db";
+import db, { doc, setDoc } from "./db";
 import { TImages } from "../utils/types";
 import { DB_NAME } from "../utils/constant";
 
 const saveUser = async (UID: string, username: string, images: TImages) => {
   try {
-    await addDoc(collection(db, DB_NAME.users), {
+    await setDoc(doc(db, DB_NAME.users, username), {
       UID,
       username,
       images,
+      followers: [],
+      requested: [],
     });
   } catch (error) {
     // eslint-disable-next-line no-console
