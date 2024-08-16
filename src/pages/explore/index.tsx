@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import useLoginStore from "../../context/use-login-store";
 import { Avatar, Table, Text, Flex, Button } from "@mantine/core";
 import getUserDetails, { TUser } from "../../services/get-user-details";
-import Requests from "../../components/requests";
 import { addFriend } from "../../services/requests";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
