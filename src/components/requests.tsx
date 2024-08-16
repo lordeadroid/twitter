@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import getUserDetails, { TUser } from "../services/get-user-details";
 import { Avatar, Button, Flex, Text } from "@mantine/core";
+<<<<<<< HEAD
 import { approveRequest, cancelRequest } from "../services/requests";
 import useLoginStore from "../context/use-login-store";
 
@@ -8,12 +9,21 @@ const Requests = ({ uid }: { uid: string }) => {
   const username = useLoginStore((state) => state.username);
   const [userData, setUserData] = useState<TUser | null>(null);
   const [updatePage, setUpdatePage] = useState(Date.now());
+=======
+
+const Requests = ({ uid }: { uid: string }) => {
+  const [userData, setUserData] = useState<TUser | null>(null);
+>>>>>>> 4366621 (feat: section for displaying requests)
 
   useEffect(() => {
     getUserDetails(uid).then(([userData]) => {
       setUserData(userData);
     });
+<<<<<<< HEAD
   }, [uid, updatePage]);
+=======
+  }, [uid]);
+>>>>>>> 4366621 (feat: section for displaying requests)
 
   return (
     <Flex
@@ -37,6 +47,7 @@ const Requests = ({ uid }: { uid: string }) => {
                 <Text fz="1rem">{element}</Text>
               </Flex>
               <Flex gap="xl">
+<<<<<<< HEAD
                 <Button
                   color="lime"
                   onClick={() => {
@@ -57,6 +68,10 @@ const Requests = ({ uid }: { uid: string }) => {
                 >
                   Cancel
                 </Button>
+=======
+                <Button color="lime">Approve</Button>
+                <Button color="pink">Cancel</Button>
+>>>>>>> 4366621 (feat: section for displaying requests)
               </Flex>
             </Flex>
           );
