@@ -32,7 +32,7 @@ const Tweet = ({ tweet }: { tweet: TTweet }) => {
   );
 };
 
-const TweetsPanel = ({ width }: { width: string }) => {
+const TweetsPanel = () => {
   const rerenderTweets = useTweetStore((state) => state.rerenderTweets);
   const uid = useLoginStore((state) => state.UID);
   const [tweets, setTweets] = useState<TTweet[] | null>(null);
@@ -45,7 +45,7 @@ const TweetsPanel = ({ width }: { width: string }) => {
   }, [rerenderTweets, uid]);
 
   return (
-    <Flex direction={"column"} p="xl" w={width} gap="md">
+    <Flex direction={"column"} p="xl" w="100%" gap="md">
       {tweets?.map((tweet, index) => {
         return <Tweet key={index} tweet={tweet} />;
       })}

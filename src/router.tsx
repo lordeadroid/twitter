@@ -10,7 +10,7 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <Page>
+    <Page h="100vh" p="2rem 4rem">
       <NavPanel width="20%" />
       <Divider orientation="vertical" />
       <Flex w="55%">
