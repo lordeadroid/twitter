@@ -5,6 +5,7 @@ import getUserDetails, { TUser } from "../../services/get-user-details";
 import { addFriend } from "../../services/requests";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
+import Requests from "../../components/requests";
 import Page from "../../components/Page";
 
 const UserProfile = ({
