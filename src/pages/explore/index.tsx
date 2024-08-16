@@ -66,9 +66,9 @@ const ExplorePage = () => {
   }, [uid]);
 
   return (
-    <Flex w="100%" p="xl" direction="column">
+    <Flex direction="column">
       <Requests uid={uid} />
-      <Table.ScrollContainer minWidth={800} w="100%">
+      <Table.ScrollContainer minWidth="100%">
         <Table verticalSpacing="lg">
           <Table.Tbody>
             {users?.map((element) => (

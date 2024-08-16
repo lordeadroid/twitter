@@ -1,15 +1,24 @@
 import AuthPage from "./pages/auth";
 import HomePage from "./pages/home";
+import Page from "./components/Page";
 import ErrorPage from "./pages/error";
 import ExplorePage from "./pages/explore";
-import { Flex } from "@mantine/core";
+import NavPanel from "./components/nav-panel";
+import { Divider, Flex } from "@mantine/core";
+import ProfilePanel from "./components/profile-panel";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <Flex>
-      <Outlet />
-    </Flex>
+    <Page>
+      <NavPanel width="20%" />
+      <Divider orientation="vertical" />
+      <Flex w="55%">
+        <Outlet />
+      </Flex>
+      <Divider orientation="vertical" />
+      <ProfilePanel width="25%" />
+    </Page>
   );
 };
 
@@ -19,11 +28,11 @@ const Router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <HomePage /> },
-      { path: "/auth", element: <AuthPage /> },
       { path: "/explore", element: <ExplorePage /> },
     ],
     errorElement: <ErrorPage />,
   },
+  { path: "/auth", element: <AuthPage /> },
 ]);
 
 export default Router;
