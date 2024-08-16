@@ -3,6 +3,7 @@ import addFriend from "../../services/add-friend";
 import useLoginStore from "../../context/use-login-store";
 import { Avatar, Table, Text, Flex, Button } from "@mantine/core";
 import getUserDetails, { TUser } from "../../services/get-user-details";
+import Requests from "../../components/requests";
 
 const UserProfile = ({
   userData,
@@ -49,25 +50,28 @@ const ExplorePage = () => {
   const [users, setUsers] = useState<TUser[] | null>(null);
 
   useEffect(() => {
-    getUserDetails(null).then((users: TUser[]) => {
+    getUserDetails(null).then((users) => {
       setUsers(users.filter((user) => user.UID !== uid));
     });
   }, [uid]);
 
   return (
-    <Table.ScrollContainer minWidth={800} w="100%" p="xl">
-      <Table verticalSpacing="lg">
-        <Table.Tbody>
-          {users?.map((element) => (
-            <UserProfile
-              userData={element}
-              username={username}
-              key={element.username}
-            />
-          ))}
-        </Table.Tbody>
-      </Table>
-    </Table.ScrollContainer>
+    <Flex w="100%" p="xl" direction="column">
+      <Requests uid={uid} />
+      <Table.ScrollContainer minWidth={800} w="100%">
+        <Table verticalSpacing="lg">
+          <Table.Tbody>
+            {users?.map((element) => (
+              <UserProfile
+                userData={element}
+                username={username}
+                key={element.username}
+              />
+            ))}
+          </Table.Tbody>
+        </Table>
+      </Table.ScrollContainer>
+    </Flex>
   );
 };
 
