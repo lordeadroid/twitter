@@ -67,7 +67,11 @@ const ExplorePage = () => {
   }, [uid]);
 
   return (
+<<<<<<< HEAD
     <Page direction="column">
+=======
+    <Flex direction="column">
+>>>>>>> a0c06e5 (refact: styling of page + router change)
       <Requests uid={uid} />
       <Table.ScrollContainer minWidth="100%">
         <Table verticalSpacing="lg">
