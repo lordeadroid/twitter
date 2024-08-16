@@ -6,7 +6,10 @@ import Requests from "../../components/requests";
 import { addFriend } from "../../services/requests";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import Page from "../../components/Page";
+=======
+>>>>>>> 29fa13e (feat: updating approve section onclick)
 
 const UserProfile = ({
   userData,
