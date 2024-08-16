@@ -21,17 +21,17 @@ const Profile = () => {
           size={150}
           radius="50%"
           mx="auto"
-          mt={-100}
+          mt={-75}
         />
         <Text ta="center" fz="xl" fw={700} mt="sm">
           {username}
         </Text>
       </Card.Section>
-      <Flex justify="space-between" mt="4rem">
-        <Button w="12rem" variant="outline" color="primary">
+      <Flex justify="space-between" mt="3rem">
+        <Button w="47%" variant="outline" color="primary">
           Full Profile
         </Button>
-        <Button onClick={handleLogout} w="12rem">
+        <Button onClick={handleLogout} w="47%">
           Logout
         </Button>
       </Flex>
