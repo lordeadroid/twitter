@@ -6,6 +6,7 @@ import Requests from "../../components/requests";
 import { addFriend } from "../../services/requests";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
+import Page from "../../components/Page";
 
 const UserProfile = ({
   userData,
@@ -66,7 +67,7 @@ const ExplorePage = () => {
   }, [uid]);
 
   return (
-    <Flex direction="column">
+    <Page direction="column">
       <Requests uid={uid} />
       <Table.ScrollContainer minWidth="100%">
         <Table verticalSpacing="lg">
@@ -81,7 +82,7 @@ const ExplorePage = () => {
           </Table.Tbody>
         </Table>
       </Table.ScrollContainer>
-    </Flex>
+    </Page>
   );
 };
 
