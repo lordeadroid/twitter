@@ -14,7 +14,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (UID === EMPTYSTRING) {
-      navigate(PATH.login);
+      navigate(PATH.auth);
     }
   }, [UID, navigate]);
 

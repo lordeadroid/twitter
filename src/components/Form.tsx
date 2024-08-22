@@ -1,11 +1,12 @@
 type TForm = {
-  handleLogin: () => void;
-  style: object;
   children: JSX.Element[];
+  handleLogin: () => void;
+  style: React.CSSProperties;
 };
 
 const Form = (props: TForm) => {
-  const { style, handleLogin, children } = props;
+  const { children, handleLogin, style } = props;
+
   return (
     <form onSubmit={handleLogin} style={style}>
       {children}

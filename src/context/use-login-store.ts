@@ -10,9 +10,11 @@ const useLoginStore = create<TLoginStore>()(
       updateUID: (uid) => set(() => ({ UID: uid })),
       username: EMPTYSTRING,
       updateUsername: (username) => set({ username }),
+      images: { avatar: EMPTYSTRING, background: EMPTYSTRING },
+      updateImages: (newImages) => set(() => ({ images: newImages })),
     }),
-    { name: STORE.login },
-  ),
+    { name: STORE.login }
+  )
 );
 
 export default useLoginStore;

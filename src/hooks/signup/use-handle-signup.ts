@@ -1,15 +1,13 @@
+import saveUser from "../../services/create-user";
+import useLoginStore from "../../context/use-login-store";
+import FIREBASE_CONFIG from "../../utils/firebase-config";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { THandleSignup } from "../../utils/types";
-import FIREBASE_CONFIG from "../../utils/firebase-config";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
-import { useNavigate } from "react-router-dom";
-import useLoginStore from "../../context/use-login-store";
-import { useEffect } from "react";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import getImgURL from "../../utils/get-img-url";
 
 const useHandleSignup = () => {
   const app = initializeApp(FIREBASE_CONFIG);
@@ -26,14 +24,16 @@ const useHandleSignup = () => {
   }, [UID, navigate]);
 
   const handleSignup: THandleSignup = async (values) => {
+    const images = getImgURL();
     const { username, email, password } = values;
 
     const { user } = await createUserWithEmailAndPassword(
       auth,
       email,
-      password,
+      password
     );
-    updateProfile(user, { displayName: username });
+
+    saveUser(user.uid, username, images);
     updateUID(user.uid);
     updateUsername(username);
 

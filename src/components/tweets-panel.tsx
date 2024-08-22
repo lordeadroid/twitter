@@ -1,30 +1,33 @@
-import { Flex, Group, Text } from "@mantine/core";
-import { useEffect, useState } from "react";
-import { SIZE } from "../utils/constant";
-
 import getTweets from "../services/get-tweets";
-import { TTweet } from "../utils/types";
-import useTweetStore from "../context/use-tweet-store";
 import useLoginStore from "../context/use-login-store";
+import useTweetStore from "../context/use-tweet-store";
+import { TTweet } from "../utils/types";
+import { useEffect, useState } from "react";
+import { Flex, Image, Text } from "@mantine/core";
 
 const Tweet = ({ tweet }: { tweet: TTweet }) => {
   const date = new Date(tweet.timestamp).toDateString();
+  const { avatar } = useLoginStore((state) => state.images);
 
   return (
     <Flex
-      bd={"1px solid darkgray"}
-      w={"100%"}
-      p={SIZE.extraSmall}
-      direction={"column"}
+      bd="1px solid darkgray"
+      w="100%"
+      direction="column"
       style={{ borderRadius: "1rem" }}
     >
-      <Group justify="space-between">
-        <Text fw={700} fz={SIZE.extraLarge}>
-          {tweet.username}
-        </Text>
-        <Text size={SIZE.extraSmall}>{date}</Text>
-      </Group>
-      <Text p={"0 2rem"}>{tweet.message}</Text>
+      <Flex justify="space-between" align="center" p="1rem 1rem 0.5rem 1rem">
+        <Flex gap="sm" align="center">
+          <Image radius="50%" h="xl" alt="profile image" src={avatar} />
+          <Text fw={700} fz="xl">
+            {tweet.username}
+          </Text>
+        </Flex>
+        <Text size="sm">{date}</Text>
+      </Flex>
+      <Text pl="3.8rem" pb="1rem" fz="lg">
+        {tweet.message}
+      </Text>
     </Flex>
   );
 };
@@ -42,7 +45,7 @@ const TweetsPanel = ({ width }: { width: string }) => {
   }, [rerenderTweets, uid]);
 
   return (
-    <Flex direction={"column"} p={SIZE.extraLarge} w={width} gap={SIZE.medium}>
+    <Flex direction={"column"} p="xl" w={width} gap="md">
       {tweets?.map((tweet, index) => {
         return <Tweet key={index} tweet={tweet} />;
       })}

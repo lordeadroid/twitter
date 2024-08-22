@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import useLoginStore from "../context/use-login-store";
+import { useNavigate } from "react-router-dom";
 import { EMPTYSTRING, PATH } from "../utils/constant";
 
 const useHandleLogout = () => {
@@ -10,7 +10,7 @@ const useHandleLogout = () => {
   const handleLogout = () => {
     updateUID(EMPTYSTRING);
     updateUsername(EMPTYSTRING);
-    navigate(PATH.login);
+    navigate(PATH.auth);
   };
 
   return handleLogout;
