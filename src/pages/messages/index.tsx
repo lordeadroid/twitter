@@ -27,7 +27,7 @@ const MessagesPage = () => {
 
   useEffect(() => {
     getUserDetails(null).then((users) => {
-      setUsers(users.filter((user) => user.friends.includes(username)));
+      setUsers(users.filter((user) => user.friends?.includes(username)));
     });
   }, [uid, username]);
 
