@@ -30,6 +30,7 @@ const Router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/explore", element: <ExplorePage /> },
+      { path: "/messages", element: <MessagesPage /> },
     ],
     errorElement: <ErrorPage />,
   },
