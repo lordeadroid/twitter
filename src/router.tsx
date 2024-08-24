@@ -7,6 +7,7 @@ import NavPanel from "./components/nav-panel";
 import { Divider, Flex } from "@mantine/core";
 import ProfilePanel from "./components/profile-panel";
 import { createBrowserRouter, Outlet } from "react-router-dom";
+import MessagesPage from "./pages/messages";
 
 const Layout = () => {
   return (
@@ -29,6 +30,7 @@ const Router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/explore", element: <ExplorePage /> },
+      { path: "/messages", element: <MessagesPage /> },
     ],
     errorElement: <ErrorPage />,
   },
