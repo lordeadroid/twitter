@@ -16,7 +16,7 @@ const UserProfile = ({
 }) => {
   const navigate = useNavigate();
   const UID = useLoginStore((state) => state.UID);
-  const [status, setStatus] = useState(userData.requested?.includes(username));
+  const [status, setStatus] = useState(userData.requested.includes(username));
 
   const handleClick = (requester: string) => {
     addFriend(requester, username);

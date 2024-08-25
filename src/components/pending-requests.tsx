@@ -30,21 +30,21 @@ const PendingRequests = () => {
       <Text fz="h2" fw={500}>
         Pending Requests
       </Text>
-      <Flex w="100%" p="md">
-        {userData?.requested?.map((element) => {
+      <Flex w="100%" p="sm">
+        {userData?.requested.map((requester) => {
           return (
-            <Flex justify="space-between" w="100%" pt="xs">
+            <Flex justify="space-between" w="100%" pt="xs" key={requester}>
               <Flex align="center" gap="sm">
                 <Avatar size={40} src={userData.images.avatar} radius="25%" />
                 <Text fz="1.25rem" fw={600}>
-                  {element}
+                  {requester}
                 </Text>
               </Flex>
               <Flex gap="lg">
                 <Button
                   color="lime"
                   onClick={() => {
-                    approveRequest(username, element).then(() => {
+                    approveRequest(username, requester).then(() => {
                       setUpdatePage(Date.now());
                     });
                   }}
@@ -54,7 +54,7 @@ const PendingRequests = () => {
                 <Button
                   color="pink"
                   onClick={() => {
-                    cancelRequest(username, element).then(() => {
+                    cancelRequest(username, requester).then(() => {
                       setUpdatePage(Date.now());
                     });
                   }}
