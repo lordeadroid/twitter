@@ -5,16 +5,7 @@ import getUserDetails, { TUser } from "../../services/get-user-details";
 import { addFriend } from "../../services/requests";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import Requests from "../../components/requests";
-=======
->>>>>>> 33eea7e (refact: componets style)
-=======
->>>>>>> fd88d2b (feat: updating approve section onclick)
-=======
->>>>>>> 6dfe602 (refact: styling of page + router change)
 import Page from "../../components/Page";
 
 const UserProfile = ({
@@ -76,15 +67,7 @@ const ExplorePage = () => {
   }, [uid]);
 
   return (
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Page direction="column">
-=======
-    <Flex direction="column">
->>>>>>> a0c06e5 (refact: styling of page + router change)
-=======
-    <Page direction="column">
->>>>>>> 33eea7e (refact: componets style)
       <Requests uid={uid} />
       <Table.ScrollContainer minWidth="100%">
         <Table verticalSpacing="lg">

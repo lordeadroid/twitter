@@ -29,7 +29,7 @@ const Requests = ({ uid }: { uid: string }) => {
         Pending Requests
       </Text>
       <Flex w="100%" p="lg">
-        {userData?.requested.map((element) => {
+        {userData?.requested?.map((element) => {
           return (
             <Flex justify="space-between" w="100%">
               <Flex align="center" gap="md">
