@@ -27,34 +27,7 @@ const MessagesPage = () => {
 
   useEffect(() => {
     getUserDetails(null).then((users) => {
-<<<<<<< HEAD
       setUsers(users.filter((user) => user.friends?.includes(username)));
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cd81cad (feat: message page)
-=======
->>>>>>> 5f0ca3f (chore: updated packages)
-      setUsers(users.filter((user) => user.friends?.includes(username)));
-=======
-      setUsers(users.filter((user) => user.friends.includes(username)));
->>>>>>> 899d232 (feat: message page)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      setUsers(users.filter((user) => user.friends?.includes(username)));
->>>>>>> a7184e9 (chore: updated packages)
-=======
->>>>>>> cd81cad (feat: message page)
-=======
-=======
-      setUsers(users.filter((user) => user.friends?.includes(username)));
->>>>>>> a7184e9 (chore: updated packages)
->>>>>>> 5f0ca3f (chore: updated packages)
->>>>>>> da68df1 (chore: updated packages)
     });
   }, [uid, username]);
 

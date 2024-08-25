@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import getUserDetails, { TUser } from "../services/get-user-details";
-import { Avatar, Button, Flex, Text } from "@mantine/core";
-import { approveRequest, cancelRequest } from "../services/requests";
-import useLoginStore from "../context/use-login-store";
 
-const Requests = ({ uid }: { uid: string }) => {
+import useLoginStore from "../context/use-login-store";
+import { Avatar, Button, Flex, Text } from "@mantine/core";
+import getUserDetails, { TUser } from "../services/get-user-details";
+import { approveRequest, cancelRequest } from "../services/requests";
+
+const PendingRequests = () => {
+  const uid = useLoginStore((state) => state.UID);
   const username = useLoginStore((state) => state.username);
-  const [userData, setUserData] = useState<TUser | null>(null);
   const [updatePage, setUpdatePage] = useState(Date.now());
+  const [userData, setUserData] = useState<TUser | null>(null);
 
   useEffect(() => {
     getUserDetails(uid).then(([userData]) => {
@@ -28,15 +30,17 @@ const Requests = ({ uid }: { uid: string }) => {
       <Text fz="h2" fw={500}>
         Pending Requests
       </Text>
-      <Flex w="100%" p="lg">
+      <Flex w="100%" p="md">
         {userData?.requested?.map((element) => {
           return (
-            <Flex justify="space-between" w="100%">
-              <Flex align="center" gap="md">
+            <Flex justify="space-between" w="100%" pt="xs">
+              <Flex align="center" gap="sm">
                 <Avatar size={40} src={userData.images.avatar} radius="25%" />
-                <Text fz="1rem">{element}</Text>
+                <Text fz="1.25rem" fw={600}>
+                  {element}
+                </Text>
               </Flex>
-              <Flex gap="xl">
+              <Flex gap="lg">
                 <Button
                   color="lime"
                   onClick={() => {
@@ -66,4 +70,4 @@ const Requests = ({ uid }: { uid: string }) => {
   );
 };
 
-export default Requests;
+export default PendingRequests;
