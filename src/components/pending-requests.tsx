@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { Button, Flex, Text } from "@mantine/core";
 
 import useLoginStore from "../context/use-login-store";
-import { Avatar, Button, Flex, Text } from "@mantine/core";
 import getUserDetails, { TUser } from "../services/get-user-details";
 import { approveRequest, cancelRequest } from "../services/requests";
 
@@ -35,7 +35,6 @@ const PendingRequests = () => {
           return (
             <Flex justify="space-between" w="100%" pt="xs" key={requester}>
               <Flex align="center" gap="sm">
-                <Avatar size={40} src={userData.images.avatar} radius="25%" />
                 <Text fz="1.25rem" fw={600}>
                   {requester}
                 </Text>
