@@ -14,8 +14,8 @@ const MessagesPage = () => {
   const username = useLoginStore((state) => state.username);
   const [users, setUsers] = useState<TUser[] | null>(null);
 
-  const handleClick = () => {
-    navigate(`${PATH.chat}/${username}`);
+  const handleClick = (user: string) => {
+    navigate(`${PATH.chat}/${user}`);
   };
 
   useEffect(() => {
@@ -40,7 +40,11 @@ const MessagesPage = () => {
                         {user.username}
                       </Text>
                     </Flex>
-                    <Button color="green" size="md" onClick={handleClick}>
+                    <Button
+                      color="green"
+                      size="md"
+                      onClick={() => handleClick(user.username)}
+                    >
                       Message
                     </Button>
                   </Flex>

@@ -3,19 +3,16 @@ import { useForm, UseFormReturnType } from "@mantine/form";
 
 import { EMPTYSTRING } from "../utils/constant";
 
-export type TMessage = {
-  value: string;
-};
-
-type TMessageBox = {
-  onClick: (value: TMessage) => void;
-};
-
-const MessageBox = ({ onClick }: TMessageBox) => {
-  const messageBox: UseFormReturnType<TMessage> = useForm({
-    mode: "uncontrolled",
+const MessageBox = ({ onClick }: { onClick: (value: string) => void }) => {
+  const messageBox: UseFormReturnType<{ value: string }> = useForm({
+    mode: "controlled",
     initialValues: { value: EMPTYSTRING },
   });
+
+  const handleClick = ({ value }: { value: string }) => {
+    onClick(value);
+    messageBox.reset();
+  };
 
   return (
     <form
@@ -25,13 +22,13 @@ const MessageBox = ({ onClick }: TMessageBox) => {
         gap: "0.75rem",
         justifyContent: "center",
       }}
-      onSubmit={messageBox.onSubmit(onClick)}
+      onSubmit={messageBox.onSubmit(handleClick)}
     >
       <TextInput
         placeholder="Type your message..."
         radius="1rem"
-        w="80%"
-        {...messageBox.getInputProps("message")}
+        w="90%"
+        {...messageBox.getInputProps("value")}
       />
       <Button type="submit">Send</Button>
     </form>
