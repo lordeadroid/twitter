@@ -1,10 +1,19 @@
-import Page from "../../components/Page";
-import { Button, ButtonProps, Flex, Image, Text } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
-import backButton from "/back-button.png";
+import {
+  Avatar,
+  Button,
+  ButtonProps,
+  Flex,
+  Image,
+  Table,
+  Text,
+} from "@mantine/core";
 import { useEffect, useState } from "react";
-import getUserDetails, { TUser } from "../../services/get-user-details";
+import { useNavigate } from "react-router-dom";
+
+import Page from "../../components/Page";
+import backButton from "/back-button.png";
 import useLoginStore from "../../context/use-login-store";
+import getUserDetails, { TUser } from "../../services/get-user-details";
 
 const BackButton = (props: ButtonProps) => {
   const navigate = useNavigate();
@@ -39,11 +48,29 @@ const MessagesPage = () => {
           Messages
         </Text>
       </Flex>
-      <Flex>
-        {users?.map((user) => {
-          return <Text>{user.username}</Text>;
-        })}
-      </Flex>
+      <Table.ScrollContainer minWidth="100%" pt="2rem">
+        <Table verticalSpacing="xl">
+          <Table.Tbody>
+            {users?.map((user) => (
+              <Table.Tr key={user.UID}>
+                <Table.Td p="xl">
+                  <Flex align="center" justify="space-between">
+                    <Flex align="center" gap="xl">
+                      <Avatar size={60} src={user.images.avatar} radius="25%" />
+                      <Text fz="xl" fw={500}>
+                        {user.username}
+                      </Text>
+                    </Flex>
+                    <Button color="green" size="md">
+                      Message
+                    </Button>
+                  </Flex>
+                </Table.Td>
+              </Table.Tr>
+            ))}
+          </Table.Tbody>
+        </Table>
+      </Table.ScrollContainer>
     </Page>
   );
 };
