@@ -3,6 +3,7 @@ export const EMPTYSTRING = "";
 export const PATH = {
   home: "/",
   auth: "/auth",
+  chat: "/chat",
 } as const;
 
 export const SIZE = {
@@ -40,7 +41,7 @@ export const STORE = {
   tweet: "tweet-store",
 } as const;
 
-export const DB_NAME = { tweets: "tweets", users: 'users' };
+export const DB_NAME = { tweets: "tweets", users: "users" } as const;
 
 export const TWEET_LIMIT = 140;
 

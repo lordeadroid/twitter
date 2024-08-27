@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 import Page from "../../components/page";
 import backButton from "/back-button.png";
+import { PATH } from "../../utils/constant";
 import useLoginStore from "../../context/use-login-store";
 import getUserDetails, { TUser } from "../../services/get-user-details";
 
@@ -30,9 +31,14 @@ const BackButton = (props: ButtonProps) => {
 };
 
 const MessagesPage = () => {
+  const navigate = useNavigate();
   const uid = useLoginStore((state) => state.UID);
   const username = useLoginStore((state) => state.username);
   const [users, setUsers] = useState<TUser[] | null>(null);
+
+  const handleClick = () => {
+    navigate(`${PATH.chat}/${username}`);
+  };
 
   useEffect(() => {
     getUserDetails(null).then((users) => {
@@ -61,7 +67,7 @@ const MessagesPage = () => {
                         {user.username}
                       </Text>
                     </Flex>
-                    <Button color="green" size="md">
+                    <Button color="green" size="md" onClick={handleClick}>
                       Message
                     </Button>
                   </Flex>
