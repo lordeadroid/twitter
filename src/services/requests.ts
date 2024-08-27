@@ -1,5 +1,6 @@
 import db, { arrayRemove, arrayUnion, doc, updateDoc } from "./db";
 import { DB_NAME } from "../utils/constant";
+import createID from "../utils/create-id";
 
 export const addFriend = async (requester: string, requestee: string) => {
   const docRef = doc(db, DB_NAME.users, requester);
@@ -11,7 +12,7 @@ export const addFriend = async (requester: string, requestee: string) => {
 
 export const cancelRequest = async (
   username: string,
-  requesterUsername: string,
+  requesterUsername: string
 ) => {
   const docRef = doc(db, DB_NAME.users, username);
 
@@ -23,24 +24,26 @@ export const cancelRequest = async (
 export const updateRequest = async (
   username: string,
   requesterUsername: string,
+  chatID: string
 ) => {
   const docRef = doc(db, DB_NAME.users, requesterUsername);
 
   await updateDoc(docRef, {
-    friends: arrayUnion(username),
+    friends: arrayUnion({ username, chatID }),
   });
 };
 
 export const approveRequest = async (
   username: string,
-  requesterUsername: string,
+  requesterUsername: string
 ) => {
   const docRef = doc(db, DB_NAME.users, username);
+  const chatID = createID();
 
   await updateDoc(docRef, {
-    friends: arrayUnion(requesterUsername),
+    friends: arrayUnion({ username: requesterUsername, chatID }),
   });
 
   cancelRequest(username, requesterUsername);
-  updateRequest(username, requesterUsername);
+  updateRequest(username, requesterUsername, chatID);
 };

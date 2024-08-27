@@ -8,19 +8,29 @@ import PageHeader from "../../components/page-header";
 import useLoginStore from "../../context/use-login-store";
 import getUserDetails, { TUser } from "../../services/get-user-details";
 
+type TChatPage = {
+  username: string;
+  chatID: string;
+};
+
 const MessagesPage = () => {
   const navigate = useNavigate();
   const uid = useLoginStore((state) => state.UID);
   const username = useLoginStore((state) => state.username);
   const [users, setUsers] = useState<TUser[] | null>(null);
 
-  const handleClick = (user: string) => {
-    navigate(`${PATH.chat}/${user}`);
+  const handleClick = (props: TChatPage) => {
+    const { username, chatID } = props;
+    navigate(`${PATH.chat}/${username}/${chatID}`);
   };
 
   useEffect(() => {
     getUserDetails(null).then((users) => {
-      setUsers(users.filter((user) => user.friends?.includes(username)));
+      setUsers(
+        users.filter(({ friends }) =>
+          friends.some((friend) => friend.username === username)
+        )
+      );
     });
   }, [uid, username]);
 
@@ -43,7 +53,13 @@ const MessagesPage = () => {
                     <Button
                       color="green"
                       size="md"
-                      onClick={() => handleClick(user.username)}
+                      onClick={() => {
+                        handleClick(
+                          user.friends.find(
+                            ({ username }) => username === username
+                          )
+                        );
+                      }}
                     >
                       Message
                     </Button>

@@ -7,7 +7,7 @@ export type TUser = {
   username: string;
   images: TImages;
   requested: string[];
-  friends: string[];
+  friends: { username: string; chatID: string }[];
 };
 
 const getUserDetails = async (uid: string | null): Promise<TUser[]> => {
@@ -17,7 +17,7 @@ const getUserDetails = async (uid: string | null): Promise<TUser[]> => {
 
   if (uid) {
     const userDetail = userDetails.find(
-      (element) => element.UID === uid,
+      (element) => element.UID === uid
     ) as TUser;
     return [userDetail];
   }

@@ -17,7 +17,10 @@ const ExplorePage = () => {
       setUsers(
         users
           .filter((user) => user.UID !== uid)
-          .filter((user) => !user.friends.includes(username))
+          .filter(
+            ({ friends }) =>
+              !friends.some((friend) => friend.username === username)
+          )
       );
     });
   }, [uid, username]);

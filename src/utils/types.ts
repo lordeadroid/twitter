@@ -34,3 +34,10 @@ export type TTweet = {
   message: string;
   timestamp: number;
 };
+
+export type TMessage = {
+  chatID: string;
+  sender: string;
+  text: string;
+  timestamp: number;
+};

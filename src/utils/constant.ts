@@ -41,7 +41,12 @@ export const STORE = {
   tweet: "tweet-store",
 } as const;
 
-export const DB_NAME = { tweets: "tweets", users: "users" } as const;
+export const DB_NAME = {
+  tweets: "tweets",
+  users: "users",
+  chats: "chats",
+  messages: "messages",
+} as const;
 
 export const TWEET_LIMIT = 140;
 

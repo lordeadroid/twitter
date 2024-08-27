@@ -1,20 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Flex, Paper, ScrollArea, Stack, Text } from "@mantine/core";
 
 import Page from "../../components/page";
+import { TMessage } from "../../utils/types";
 import PageHeader from "../../components/page-header";
+import getMessages from "../../services/get-messages";
 import MessageBox from "../../components/message-box";
 import useLoginStore from "../../context/use-login-store";
+import { createMessage } from "../../services/create-chat";
 
 const ChatPage = () => {
-  const { user } = useParams();
+  const { user, chatID } = useParams();
   const username = useLoginStore((state) => state.username);
-  const [messages, setMessage] = useState([{ msg: "hello", sender: "test" }]);
+  const [messages, setMessages] = useState<TMessage[]>([]);
+  const [updatePage, setUpdatePage] = useState(Date.now());
+
+  useEffect(() => {
+    getMessages(chatID as string).then((data) => {
+      setMessages(data);
+    });
+  }, [updatePage, chatID]);
 
   const handleClick = (value: string) => {
-    setMessage((prev) => [...prev, { msg: value, sender: username }]);
-    console.log(messages);
+    createMessage(chatID as string, username, value);
+    setUpdatePage(Date.now());
   };
 
   return (
@@ -24,7 +34,7 @@ const ChatPage = () => {
         <Flex w="100%" h="85%">
           <ScrollArea w="100%">
             <Stack>
-              {messages.map(({ msg, sender }, index) => (
+              {messages.map(({ text, sender }, index) => (
                 <Paper
                   key={index}
                   p="sm"
@@ -35,7 +45,7 @@ const ChatPage = () => {
                     alignSelf: sender === username ? "flex-end" : "flex-start",
                   }}
                 >
-                  <Text>{msg}</Text>
+                  <Text>{text}</Text>
                 </Paper>
               ))}
             </Stack>
