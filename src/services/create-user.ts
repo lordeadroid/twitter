@@ -8,7 +8,7 @@ const saveUser = async (UID: string, username: string, images: TImages) => {
       UID,
       username,
       images,
-      followers: [],
+      friends: [],
       requested: [],
     });
   } catch (error) {

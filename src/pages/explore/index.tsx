@@ -14,9 +14,13 @@ const ExplorePage = () => {
 
   useEffect(() => {
     getUserDetails(null).then((users) => {
-      setUsers(users.filter((user) => user.UID !== uid));
+      setUsers(
+        users
+          .filter((user) => user.UID !== uid)
+          .filter((user) => !user.friends.includes(username))
+      );
     });
-  }, [uid]);
+  }, [uid, username]);
 
   return (
     <Page direction="column">
