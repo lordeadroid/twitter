@@ -10,7 +10,7 @@ import useLoginStore from "../../context/use-login-store";
 const ChatPage = () => {
   const { user } = useParams();
   const username = useLoginStore((state) => state.username);
-  const [messages, setMessage] = useState([{ msg: "hello", sender: "test2" }]);
+  const [messages, setMessage] = useState([{ msg: "hello", sender: "test" }]);
 
   const handleClick = (value: string) => {
     setMessage((prev) => [...prev, { msg: value, sender: username }]);
@@ -21,7 +21,7 @@ const ChatPage = () => {
     <Page direction="column">
       <PageHeader title={user as string} />
       <Flex justify="space-between" direction="column" h="100%" p="xl">
-        <Flex w="100%">
+        <Flex w="100%" h="85%">
           <ScrollArea w="100%">
             <Stack>
               {messages.map(({ msg, sender }, index) => (
