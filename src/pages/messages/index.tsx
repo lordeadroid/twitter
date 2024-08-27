@@ -1,34 +1,12 @@
-import {
-  Avatar,
-  Button,
-  ButtonProps,
-  Flex,
-  Image,
-  Table,
-  Text,
-} from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Avatar, Button, Flex, Table, Text } from "@mantine/core";
 
 import Page from "../../components/page";
-import backButton from "/back-button.png";
 import { PATH } from "../../utils/constant";
+import PageHeader from "../../components/page-header";
 import useLoginStore from "../../context/use-login-store";
 import getUserDetails, { TUser } from "../../services/get-user-details";
-
-const BackButton = (props: ButtonProps) => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(-1);
-  };
-
-  return (
-    <Button variant="subtle" onClick={handleClick} size="md" {...props}>
-      <Image src={backButton} w="2.25rem" />
-    </Button>
-  );
-};
 
 const MessagesPage = () => {
   const navigate = useNavigate();
@@ -48,12 +26,7 @@ const MessagesPage = () => {
 
   return (
     <Page direction="column">
-      <Flex w="100%" pos="relative" align="center" justify="center">
-        <BackButton pos="absolute" left={0} />
-        <Text fz="h1" fw={700}>
-          Messages
-        </Text>
-      </Flex>
+      <PageHeader title="Messages" />
       <Table.ScrollContainer minWidth="100%" pt="2rem">
         <Table verticalSpacing="xl">
           <Table.Tbody>
