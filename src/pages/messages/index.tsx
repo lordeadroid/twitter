@@ -10,7 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Page from "../../components/Page";
+import Page from "../../components/page";
 import backButton from "/back-button.png";
 import useLoginStore from "../../context/use-login-store";
 import getUserDetails, { TUser } from "../../services/get-user-details";

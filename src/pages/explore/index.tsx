@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Table } from "@mantine/core";
-import Page from "../../components/Page";
+import Page from "../../components/page";
 import PendingRequests from "../../components/pending-requests";
 import UserProfile from "../../components/user-profile";
 import useLoginStore from "../../context/use-login-store";
