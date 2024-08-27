@@ -19,8 +19,8 @@ const MessagesPage = () => {
   const username = useLoginStore((state) => state.username);
   const [users, setUsers] = useState<TUser[] | null>(null);
 
-  const handleClick = (props: TChatPage) => {
-    const { username, chatID } = props;
+  const handleClick = (props: TChatPage | undefined) => {
+    const { username, chatID } = props as TChatPage;
     navigate(`${PATH.chat}/${username}/${chatID}`);
   };
 
