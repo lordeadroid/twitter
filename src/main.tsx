@@ -8,7 +8,7 @@ import { Notifications } from "@mantine/notifications";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <MantineProvider theme={theme}>
-    <Notifications />
+    <Notifications position="top-right" />
     <App />
-  </MantineProvider>,
+  </MantineProvider>
 );

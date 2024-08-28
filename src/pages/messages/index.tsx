@@ -8,10 +8,7 @@ import PageHeader from "../../components/page-header";
 import useLoginStore from "../../context/use-login-store";
 import getUserDetails, { TUser } from "../../services/get-user-details";
 
-type TChatPage = {
-  username: string;
-  chatID: string;
-};
+type TChatPage = (username: string, chatID: string) => void;
 
 const MessagesPage = () => {
   const navigate = useNavigate();
@@ -19,8 +16,7 @@ const MessagesPage = () => {
   const username = useLoginStore((state) => state.username);
   const [users, setUsers] = useState<TUser[] | null>(null);
 
-  const handleClick = (props: TChatPage | undefined) => {
-    const { username, chatID } = props as TChatPage;
+  const handleClick: TChatPage = (username, chatID) => {
     navigate(`${PATH.chat}/${username}/${chatID}`);
   };
 
@@ -54,11 +50,10 @@ const MessagesPage = () => {
                       color="green"
                       size="md"
                       onClick={() => {
-                        handleClick(
-                          user.friends.find(
-                            ({ username }) => username === username
-                          )
+                        const { chatID } = user.friends.find(
+                          (friend) => friend.username === username
                         );
+                        handleClick(user.username, chatID);
                       }}
                     >
                       Message

@@ -1,12 +1,14 @@
-import FIREBASE_CONFIG from "../../utils/firebase-config";
-import useLoginStore from "../../context/use-login-store";
-import getUserDetails from "../../services/get-user-details";
 import { useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+import FIREBASE_CONFIG from "../../utils/firebase-config";
+import useLoginStore from "../../context/use-login-store";
+import getUserDetails from "../../services/get-user-details";
 import { THandleLogin } from "../../utils/types";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import createNotification from "../../services/create-notification";
 
 const useHandleLogin = () => {
   const navigate = useNavigate();
@@ -29,10 +31,10 @@ const useHandleLogin = () => {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     const [userDetail] = await getUserDetails(user.uid);
 
+    createNotification("Login", "Logged in successfully");
     updateUID(user.uid);
     updateUsername(userDetail.username);
     updateImages(userDetail.images);
-
     navigate(PATH.home);
   };
 
