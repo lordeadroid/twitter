@@ -35,6 +35,9 @@ const ChatPage = () => {
     <Page direction="column">
       <PageHeader title={user as string} />
       <Flex justify="space-between" direction="column" h="100%" p="xl">
+        <Text ta="center" c="red">
+          !This chat is not end to end encrpyted
+        </Text>
         <Flex w="100%" h="85%" direction="column-reverse">
           <ScrollArea w="100%">
             <Stack>
