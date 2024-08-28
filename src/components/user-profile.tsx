@@ -6,6 +6,7 @@ import { addFriend } from "../services/requests";
 import { TUser } from "../services/get-user-details";
 import { EMPTYSTRING, PATH } from "../utils/constant";
 import useLoginStore from "../context/use-login-store";
+import createNotification from "../services/create-notification";
 
 const UserProfile = ({
   userData,
@@ -42,7 +43,10 @@ const UserProfile = ({
           <Flex gap="md">
             <Button
               color={status ? "green" : "blue"}
-              onClick={() => handleClick(userData.username)}
+              onClick={() => {
+                handleClick(userData.username);
+                createNotification("Friend Request", "Friend Request Sent");
+              }}
             >
               {status ? "Requested" : "Add Friend"}
             </Button>

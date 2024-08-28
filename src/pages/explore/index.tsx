@@ -9,8 +9,9 @@ import getUserDetails, { TUser } from "../../services/get-user-details";
 
 const ExplorePage = () => {
   const uid = useLoginStore((state) => state.UID);
-  const username = useLoginStore((state) => state.username);
   const [users, setUsers] = useState<TUser[] | null>(null);
+  const [updatePage, setUpdatePage] = useState(Date.now());
+  const username = useLoginStore((state) => state.username);
 
   useEffect(() => {
     getUserDetails(null).then((users) => {
@@ -23,11 +24,11 @@ const ExplorePage = () => {
           )
       );
     });
-  }, [uid, username]);
+  }, [uid, username, updatePage]);
 
   return (
     <Page direction="column">
-      <PendingRequests />
+      <PendingRequests updatePage={() => setUpdatePage(Date.now())} />
       <Table.ScrollContainer minWidth="100%">
         <Table verticalSpacing="lg">
           <Table.Tbody>

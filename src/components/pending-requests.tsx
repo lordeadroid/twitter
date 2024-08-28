@@ -4,11 +4,11 @@ import { Button, Flex, Text } from "@mantine/core";
 import useLoginStore from "../context/use-login-store";
 import getUserDetails, { TUser } from "../services/get-user-details";
 import { approveRequest, cancelRequest } from "../services/requests";
+import createNotification from "../services/create-notification";
 
-const PendingRequests = () => {
+const PendingRequests = ({ updatePage }: { updatePage: () => void }) => {
   const uid = useLoginStore((state) => state.UID);
   const username = useLoginStore((state) => state.username);
-  const [updatePage, setUpdatePage] = useState(Date.now());
   const [userData, setUserData] = useState<TUser | null>(null);
 
   useEffect(() => {
@@ -44,7 +44,11 @@ const PendingRequests = () => {
                   color="lime"
                   onClick={() => {
                     approveRequest(username, requester).then(() => {
-                      setUpdatePage(Date.now());
+                      updatePage();
+                      createNotification(
+                        "Friend Request",
+                        `${requester} is your friend now`
+                      );
                     });
                   }}
                 >

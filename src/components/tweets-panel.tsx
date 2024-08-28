@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Button, Flex, Image, ScrollArea, Text } from "@mantine/core";
 
-import deleteIcon from "/delete-icon.png";
 import { TTweet } from "../utils/types";
+import deleteIcon from "/delete-icon.png";
 import getTweets from "../services/get-tweets";
+import deleteTweet from "../services/delete-tweet";
 import useLoginStore from "../context/use-login-store";
 import useTweetStore from "../context/use-tweet-store";
-import deleteTweet from "../services/delete-tweet";
+import createNotification from "../services/create-notification";
 
 const Tweet = ({
   tweet,
@@ -40,6 +41,7 @@ const Tweet = ({
             onClick={async () => {
               await deleteTweet(tweet.message, tweet.username);
               updatePage();
+              createNotification("Tweet", "Tweet Deleted Successfully");
             }}
           >
             <Image h="1rem" src={deleteIcon} />
