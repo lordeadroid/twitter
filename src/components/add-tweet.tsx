@@ -5,6 +5,7 @@ import Button from "./button";
 import updateTweets from "../services/update-tweets";
 import useLoginStore from "../context/use-login-store";
 import useTweetStore from "../context/use-tweet-store";
+import createNotification from "../services/create-notification";
 
 const AddTweet = () => {
   const [message, setMessage] = useState(EMPTYSTRING);
@@ -24,6 +25,7 @@ const AddTweet = () => {
 
   const handleSubmit = () => {
     updateTweets(UID, username, message);
+    createNotification("Tweet", "Tweet Created Successfully");
     setMessage(EMPTYSTRING);
     refreshTweets();
   };

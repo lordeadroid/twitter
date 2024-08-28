@@ -52,7 +52,7 @@ const MessagesPage = () => {
                       onClick={() => {
                         const { chatID } = user.friends.find(
                           (friend) => friend.username === username
-                        );
+                        ) as { chatID: string };
                         handleClick(user.username, chatID);
                       }}
                     >
