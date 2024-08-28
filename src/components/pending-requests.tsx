@@ -58,7 +58,7 @@ const PendingRequests = ({ updatePage }: { updatePage: () => void }) => {
                   color="pink"
                   onClick={() => {
                     cancelRequest(username, requester).then(() => {
-                      setUpdatePage(Date.now());
+                      updatePage();
                     });
                   }}
                 >
