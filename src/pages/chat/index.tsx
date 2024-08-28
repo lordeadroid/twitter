@@ -14,27 +14,31 @@ const ChatPage = () => {
   const { user, chatID } = useParams();
   const username = useLoginStore((state) => state.username);
   const [messages, setMessages] = useState<TMessage[]>([]);
-  const [updatePage, setUpdatePage] = useState(Date.now());
 
   useEffect(() => {
-    getMessages(chatID as string).then((data) => {
-      setMessages(data);
-    });
-  }, [updatePage, chatID]);
+    const handleNewMessages = (newMessages: TMessage[]) => {
+      setMessages(newMessages);
+    };
+
+    const stopUpdating = getMessages(chatID as string, handleNewMessages);
+
+    return () => {
+      stopUpdating();
+    };
+  }, [chatID]);
 
   const handleClick = (value: string) => {
     createMessage(chatID as string, username, value);
-    setUpdatePage(Date.now());
   };
 
   return (
     <Page direction="column">
       <PageHeader title={user as string} />
       <Flex justify="space-between" direction="column" h="100%" p="xl">
-        <Flex w="100%" h="85%">
+        <Flex w="100%" h="85%" direction="column-reverse">
           <ScrollArea w="100%">
             <Stack>
-              {messages.map(({ text, sender }, index) => (
+              {messages.reverse().map(({ text, sender }, index) => (
                 <Paper
                   key={index}
                   p="sm"
