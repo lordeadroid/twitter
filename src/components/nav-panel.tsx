@@ -8,9 +8,9 @@ import { Flex, Group, Image, Text } from "@mantine/core";
 const NavPanel = ({ width }: { width: string }) => {
   const navigate = useNavigate();
   const menuOptions = [
-    { name: "home", icon: homeIcon },
-    { name: "explore", icon: exploreIcon },
-    { name: "messages", icon: messagesIcon },
+    { name: "home", icon: homeIcon, route: "/" },
+    { name: "explore", icon: exploreIcon, route: "/explore" },
+    { name: "messages", icon: messagesIcon, route: "/messages" },
   ];
 
   return (
@@ -30,7 +30,7 @@ const NavPanel = ({ width }: { width: string }) => {
               key={index}
               p="sm"
               align="center"
-              onClick={() => navigate(option.name)}
+              onClick={() => navigate(option.route)}
             >
               <Image src={option.icon} alt="icon" h="2rem" />
               <Text>{option.name}</Text>
