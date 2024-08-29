@@ -4,6 +4,7 @@ import twitterLogo from "/favicon.png";
 import messagesIcon from "/messages.png";
 import { useNavigate } from "react-router-dom";
 import { Flex, Group, Image, Text } from "@mantine/core";
+import styles from "./components.module.css";
 
 const NavPanel = ({ width }: { width: string }) => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const NavPanel = ({ width }: { width: string }) => {
               p="sm"
               align="center"
               onClick={() => navigate(option.route)}
+              className={styles.onhover}
             >
               <Image src={option.icon} alt="icon" h="2rem" />
               <Text>{option.name}</Text>
