@@ -28,14 +28,20 @@ const useHandleLogin = () => {
   const handleLogin: THandleLogin = async (values) => {
     const { email, password } = values;
 
-    const { user } = await signInWithEmailAndPassword(auth, email, password);
-    const [userDetail] = await getUserDetails(user.uid);
+    try {
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      const [userDetail] = await getUserDetails(user.uid);
 
-    createNotification("Login", "Logged in successfully");
-    updateUID(user.uid);
-    updateUsername(userDetail.username);
-    updateImages(userDetail.images);
-    navigate(PATH.home);
+      createNotification("Login", `Welcome ${userDetail.username}`);
+
+      updateUID(user.uid);
+      updateUsername(userDetail.username);
+      updateImages(userDetail.images);
+
+      navigate(PATH.home);
+    } catch (_error) {
+      createNotification("Login", "Invalid Credentials");
+    }
   };
 
   return handleLogin;

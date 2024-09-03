@@ -8,6 +8,7 @@ import { THandleSignup } from "../../utils/types";
 import { EMPTYSTRING, PATH } from "../../utils/constant";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import getImgURL from "../../utils/get-img-url";
+import createNotification from "../../services/create-notification";
 
 const useHandleSignup = () => {
   const app = initializeApp(FIREBASE_CONFIG);
@@ -27,17 +28,23 @@ const useHandleSignup = () => {
     const images = getImgURL();
     const { username, email, password } = values;
 
-    const { user } = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    try {
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-    saveUser(user.uid, username, images);
-    updateUID(user.uid);
-    updateUsername(username);
+      createNotification("Signup", "Thanks For Joining Us");
 
-    navigate(PATH.home);
+      saveUser(user.uid, username, images);
+      updateUID(user.uid);
+      updateUsername(username);
+
+      navigate(PATH.home);
+    } catch (_error) {
+      createNotification("Signup", "Email Already Taken");
+    }
   };
 
   return handleSignup;
